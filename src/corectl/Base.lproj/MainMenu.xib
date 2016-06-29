@@ -683,7 +683,40 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="7F0-f8-uD9"/>
-                <menuItem title="Quit" tag="3" alternate="YES" id="Nfe-LP-eNg">
+                <menuItem title="Check for updates" id="G6m-bG-AHV">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Fetch latest CoreOS ISO" id="cxS-wy-CSq">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Fetch latest CoreOS ISO" id="WjL-bi-BbT">
+                        <items>
+                            <menuItem title="Alpha" id="0SQ-P4-rTq">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="fetchLatestISOAlpha:" target="Voe-Tx-rLC" id="DCJ-Zh-pW9"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Beta" id="KEW-NR-3cp">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="fetchLatestISOBeta:" target="Voe-Tx-rLC" id="3sE-Lg-VcR"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Stable" id="gJK-EZ-iV0">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="fetchLatestISOStable:" target="Voe-Tx-rLC" id="xjn-If-zaL"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="6MD-ne-tfW"/>
+                <menuItem title="Preferences" id="jv0-Md-oMt">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="gfq-fY-qL1"/>
+                <menuItem title="Quit Corectl" tag="3" alternate="YES" id="Nfe-LP-eNg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="Quit:" target="Voe-Tx-rLC" id="1hY-bR-e5f"/>
