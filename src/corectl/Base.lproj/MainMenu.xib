@@ -683,7 +683,7 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="7F0-f8-uD9"/>
-                <menuItem title="Check for updates" id="G6m-bG-AHV">
+                <menuItem title="Check for updates" tag="3" id="G6m-bG-AHV">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkForUpdates:" target="Voe-Tx-rLC" id="ZGM-0U-UMz"/>
@@ -715,10 +715,17 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="6MD-ne-tfW"/>
-                <menuItem title="Preferences" id="jv0-Md-oMt">
+                <menuItem title="Preferences" tag="4" id="jv0-Md-oMt">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="gfq-fY-qL1"/>
+                <menuItem title="About" id="0B9-QX-t5T">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="About:" target="Voe-Tx-rLC" id="KgO-Vx-xhu"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="HkQ-9J-TSn"/>
                 <menuItem title="Quit Corectl" tag="3" alternate="YES" id="Nfe-LP-eNg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
@@ -726,7 +733,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-570.5" y="131.5"/>
+            <point key="canvasLocation" x="-906.5" y="95.5"/>
         </menu>
     </objects>
 </document>
