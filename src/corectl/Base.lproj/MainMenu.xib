@@ -685,6 +685,9 @@
                 <menuItem isSeparatorItem="YES" id="7F0-f8-uD9"/>
                 <menuItem title="Check for updates" id="G6m-bG-AHV">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForUpdates:" target="Voe-Tx-rLC" id="ZGM-0U-UMz"/>
+                    </connections>
                 </menuItem>
                 <menuItem title="Fetch latest CoreOS ISO" id="cxS-wy-CSq">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -723,7 +726,7 @@
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-198.5" y="80.5"/>
+            <point key="canvasLocation" x="-570.5" y="131.5"/>
         </menu>
     </objects>
 </document>

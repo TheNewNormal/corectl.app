@@ -23,6 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.image = icon
         statusItem.menu = statusMenu
         
+        addToLoginItems()
         ServerStart()
         
         // create menu programmaticly
@@ -71,12 +72,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // stop corectld server
         ServerStop()
-
+        ServerStop()
+        
         sleep(5)
 
         menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
         // start corectld server
         ServerStart()
+    }
+    
+    
+    
+    @IBAction func checkForUpdates(sender: NSMenuItem) {
+        
     }
     
     
@@ -177,6 +185,21 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         alert.messageText = mText
         alert.informativeText = infoText
         alert.runModal()
+    }
+    
+    
+    // Adds the app to the system's list of login items.
+    // NOTE: This is a relatively janky way of doing this. Using a
+    // bundled helper app is Apple's recommended approach, but that
+    // has a lot of configuration overhead to get right.
+    func addToLoginItems() {
+        NSTask.launchedTaskWithLaunchPath(
+            "/usr/bin/osascript",
+            arguments: [
+                 "-e",
+                 "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/corectl.app\", hidden:false, name:\"Corectl\"}"
+            ]
+        )
     }
     
 }
