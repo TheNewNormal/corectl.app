@@ -19,6 +19,8 @@ if [[ "$CHECK_CHANNEL" == "downloading" ]]; then
     echo " "
     echo "You need to reload your VMs to use the lastest version !!! "
     rm -f ~/.coreos/tmp/check_channel
+else
+    echo "You have the latest ISO already ..."
 fi
 
 echo " "
