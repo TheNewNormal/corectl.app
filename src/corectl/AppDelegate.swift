@@ -31,12 +31,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // check if corectl blobs are in place
         check_for_corectl_blobs()
+        
+        // check for latest corectl blobs on github
+        check_for_corectl_blobs_github()
 
         // enable launch at login
         addToLoginItems()
         
         // start corectld server
         ServerStartShell()
+        
+        // check for latest blobs on github
+        _ = NSTimer.scheduledTimerWithTimeInterval(3600.0, target: self, selector: #selector(AppDelegate.check_for_corectl_blobs_github), userInfo: nil, repeats: true)
         
         // create menu programmaticly
         //        let Quit : NSMenuItem = NSMenuItem(title: "Quit", action: #selector(AppDelegate.Quit(_:)), keyEquivalent: "")
@@ -114,6 +120,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
         // start corectld server
         ServerStartShell()
+        //
+        menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
     }
     
     
@@ -191,6 +199,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     // helping functions
+    
+    // check for updates every hour
+    func check_for_corectl_blobs_github()
+    {        
+        let script = NSBundle.mainBundle().resourcePath! + "/check_blobs_version.command"
+        let status = shell(script, arguments: [])
+        //
+        if (status == "yes"){
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(3)?.title = "Download updates..."
+            let mText: String = "Corectl for macOS "
+            let infoText: String = "There is an update available, please run via menu Download updates... !!!"
+            displayWithMessage(mText, infoText: infoText)
+        }
+
+    }
     
     // check sudo password
     func check_sudo_password() {
@@ -329,6 +353,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         )
     }
     
+    
+    // shell commands to run
+    func shell(launchPath: String, arguments: [String]) -> String
+    {
+        let task = NSTask()
+        task.launchPath = launchPath
+        task.arguments = arguments
+        
+        let pipe = NSPipe()
+        task.standardOutput = pipe
+        task.launch()
+        
+        let data = pipe.fileHandleForReading.readDataToEndOfFile()
+        let output = String(data: data, encoding: NSUTF8StringEncoding)!
+        if output.characters.count > 0 {
+            return output.substringToIndex(output.endIndex.advancedBy(-1))
+        }
+        return output
+    }
     
 }
 
