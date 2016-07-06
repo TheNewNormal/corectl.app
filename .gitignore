@@ -1,0 +1,10 @@
+.DS_Store
+.imdone
+.imdoneignore
+.vscode
+hyperkit
+imgs
+*.img
+tmp.*
+bin/
+*.tar.gz
