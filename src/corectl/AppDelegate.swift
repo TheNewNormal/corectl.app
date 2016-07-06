@@ -145,23 +145,33 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func About(sender: NSMenuItem) {
         let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")as? String
         let mText: String = "Corectl for macOS v" + version!
-        let infoText: String = "It is a simple wrapper around the corectld server, which allows to have a control via the Status Bar App !!!"
+        let infoText: String = "It is a simple wrapper around the corectld server, allows to have a control via the Status Bar App !!!"
         displayWithMessage(mText, infoText: infoText)
     }
     
 
     // Quit App
     @IBAction func Quit(sender: NSMenuItem) {
-        // send a notification on to the screen
-        let notification: NSUserNotification = NSUserNotification()
-        notification.title = "Quitting Corectl App"
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        //
+        let alert: NSAlert = NSAlert()
+        alert.messageText = "Quitting App will halt all your running VMs !!!"
+        alert.informativeText = "Are you sure you want to close the App?"
+        alert.alertStyle = NSAlertStyle.WarningAlertStyle
+        alert.addButtonWithTitle("OK")
+        alert.addButtonWithTitle("Cancel")
+        if alert.runModal() == NSAlertFirstButtonReturn {
+            // if OK clicked 
+            // send a notification on to the screen
+            let notification: NSUserNotification = NSUserNotification()
+            notification.title = "Quitting Corectl App"
+            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
 
-        // stop corectld server
-        ServerStop()
+            // stop corectld server
+            ServerStop()
         
-        // exit App
-        exit(0)
+            // exit App
+            exit(0)
+        }
     }
     // menu functions //
     
