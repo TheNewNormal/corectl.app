@@ -44,6 +44,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // check for latest blobs on github
         _ = NSTimer.scheduledTimerWithTimeInterval(3600.0, target: self, selector: #selector(AppDelegate.check_for_corectl_blobs_github), userInfo: nil, repeats: true)
+        
+        // check for active VMs and update menu item
+        _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(AppDelegate.active_vms), userInfo: nil, repeats: true)
     }
     
     
@@ -210,6 +213,23 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             displayWithMessage(mText, infoText: infoText)
             // exiting App
             NSApplication.sharedApplication().terminate(self)
+        }
+    }
+    
+    // show active vms in the menu
+    func active_vms() {
+        let script = NSBundle.mainBundle().resourcePath! + "/check_active_vms.command"
+        let status = shell(script, arguments: [])
+        //
+        if (status != "0"){
+            // update menu item
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(10)?.title = "Active VMs: " + status
+        }
+        else {
+            // update menu item
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(10)?.title = "Active VMs: 0"
         }
     }
     
