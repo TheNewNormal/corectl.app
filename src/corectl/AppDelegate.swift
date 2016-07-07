@@ -46,7 +46,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         _ = NSTimer.scheduledTimerWithTimeInterval(3600.0, target: self, selector: #selector(AppDelegate.check_for_corectl_blobs_github), userInfo: nil, repeats: true)
         
         // check for active VMs and update menu item
-        _ = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: #selector(AppDelegate.active_vms), userInfo: nil, repeats: true)
+        _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.active_vms), userInfo: nil, repeats: true)
     }
     
     
@@ -59,20 +59,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     // restart corectld server
     @IBAction func Restart(sender: NSMenuItem) {
-        let menuItem : NSStatusItem = statusItem
-        menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
         
-        // stop corectld server
-        ServerStop()
-        ServerStop()
-        
-        sleep(5)
-
-        menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
-        // start corectld server
-        ServerStartShell()
         //
-        menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
+        let alert: NSAlert = NSAlert()
+        alert.messageText = "Restarting Corectld server will halt all your running VMs !!!"
+        alert.informativeText = "Are you sure you want to do that?"
+        alert.alertStyle = NSAlertStyle.WarningAlertStyle
+        alert.addButtonWithTitle("OK")
+        alert.addButtonWithTitle("Cancel")
+        if alert.runModal() == NSAlertFirstButtonReturn {
+            // if OK clicked
+            // send a notification on to the screen
+            print("Restarting corectld server")
+            let notification: NSUserNotification = NSUserNotification()
+            notification.title = "Restarting Corectld server"
+            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
+        
+            // stop corectld server
+            ServerStop()
+            ServerStop()
+
+            menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
+            // start corectld server
+            ServerStartShell()
+            //
+            menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
+        }
     }
     
     
@@ -187,6 +202,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         print("Checking for blobs on github ...")
         let script = NSBundle.mainBundle().resourcePath! + "/check_blobs_version.command"
         let status = shell(script, arguments: [])
+        NSLog("update status: '%@'",status)
         //
         if (status == "yes"){
             let menuItem : NSStatusItem = statusItem
@@ -219,9 +235,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // show active vms in the menu
     func active_vms() {
         let script = NSBundle.mainBundle().resourcePath! + "/check_active_vms.command"
-        let status = shell(script, arguments: [])
+        let status: String = shell(script, arguments: [])
+        //NSLog("Active VMs: '%@'",status)
+        
         //
-        if (status != "0"){
+        if ( status != "0" ){
             // update menu item
             let menuItem : NSStatusItem = statusItem
             menuItem.menu?.itemWithTag(10)?.title = "Active VMs: " + status
@@ -232,6 +250,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menuItem.menu?.itemWithTag(10)?.title = "Active VMs: 0"
         }
     }
-    
+
 }
 
