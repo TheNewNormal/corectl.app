@@ -675,7 +675,7 @@
                         <action selector="Server:" target="Voe-Tx-rLC" id="CWB-Wf-pzJ"/>
                     </connections>
                 </menuItem>
-                <menuItem title=" Active VMs: 0" tag="10" id="kzE-BW-H6l">
+                <menuItem title=" Active VMs: 0" state="mixed" tag="10" id="kzE-BW-H6l">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="C9F-H9-AOg"/>

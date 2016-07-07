@@ -4,10 +4,10 @@
 
 vms=$(/usr/local/sbin/corectld status | grep "Active VMs:" | awk '{print $3}')
 
-if [ $vms > 0 ]; then
+if [[ "$vms" -ne "0" ]]; then
     # active VMs
     echo $vms
 else
     # no vms
-    echo 0
+    echo "0"
 fi
