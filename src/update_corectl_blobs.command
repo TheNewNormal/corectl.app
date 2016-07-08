@@ -35,6 +35,7 @@ rm -fr ~/tmp/corectl > /dev/null 2>&1
 
 #
 echo "Download has finished !!!"
+echo " "
 echo "You need to restart 'corectld' server, but Halt all your VMs first !!! "
 echo " "
 pause 'Press [Enter] key to continue...'

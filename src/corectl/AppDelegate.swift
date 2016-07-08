@@ -247,7 +247,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let menuItem : NSStatusItem = statusItem
             menuItem.menu?.itemWithTag(3)?.title = "Download updates..."
             let mText: String = "Corectl for macOS "
-            let infoText: String = "There is an update available, please run via menu - Download updates... !!!"
+            let infoText: String = "There is an update available, please run - Download updates... !!!"
             displayWithMessage(mText, infoText: infoText)
         }
     }
