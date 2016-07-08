@@ -3,6 +3,9 @@ Corectl App for macOS
 
 **Corectl App** is a macOS Status bar App which works like a wrapper around the [corectl](https://github.com/TheNewNormal/corectl) command line tool `corectld` to control the server runtime process. 
 
+**Note:** `Corectl App` only controls `corectld` server daemon, and is very, very, light on macOS system resources, when running and when idle. Also if there are no VMs running `corectld` server daemon is not using much resources too.
+
+
 [corectl](https://github.com/TheNewNormal/corectl) allows to run CoreOS VMs on macOS using [xhyve](https://github.com/mist64/xhyve) which uses native macOS Hypervisor framework. Using native macOS Hypervisor framework eliminates of needs to use Virtual Box and other similar software to run your CoreOS VMs.
 
 ![Corectl_APP](corectl_app.png "Corectl_APP")
@@ -32,6 +35,8 @@ When you start `Corectl` app, you will find a small icon with the CoreOS logo wi
 Under menu you will be able:
 
 - To see that Server is running
+- Shows Server version
+- Shows Active VMs
 - Restart the server
 - Check and download `corectl` new version
 - Fetch latest CoreOS ISO images, which will be stored under `~/.coreos` folder and can be shared between all VMs.

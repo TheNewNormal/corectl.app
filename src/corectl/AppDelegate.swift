@@ -35,15 +35,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // check if corectl blobs are in place
         check_for_corectl_blobs()
+    
+        // start corectld server
+        ServerStartShell()
         
         // check for latest corectl blobs on github
         check_for_corectl_blobs_github()
         
-        // start corectld server
-        ServerStartShell()
-        
         // check for latest blobs on github
         _ = NSTimer.scheduledTimerWithTimeInterval(3600.0, target: self, selector: #selector(AppDelegate.check_for_corectl_blobs_github), userInfo: nil, repeats: true)
+        
+        // check for server status
+        _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.server_status), userInfo: nil, repeats: true)
         
         // check for active VMs and update menu item
         _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.active_vms), userInfo: nil, repeats: true)
@@ -113,6 +116,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             // run update script
             runTerminal(NSBundle.mainBundle().resourcePath! + "/update_corectl_blobs.command")
+            //
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
         }
         else
         {
@@ -196,6 +202,22 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // Other funtions //
     
+    // check server status and update menu
+    func server_status() {
+        let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
+        let status = shell(script, arguments: [])
+        // NSLog("corectld status: '%@'",status)
+        //
+        if (status == "yes"){
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(1)?.title = "Server is running"
+        }
+        else {
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(1)?.title = "Server is Off"
+        }
+    }
+    
     // check for updates every hour
     func check_for_corectl_blobs_github()
     {
@@ -242,12 +264,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if ( status != "0" ){
             // update menu item
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(10)?.title = "Active VMs: " + status
+            menuItem.menu?.itemWithTag(10)?.title = " Active VMs: " + status
         }
         else {
             // update menu item
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(10)?.title = "Active VMs: 0"
+            menuItem.menu?.itemWithTag(10)?.title = " Active VMs: 0"
         }
     }
 
