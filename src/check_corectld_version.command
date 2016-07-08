@@ -2,12 +2,7 @@
 
 # check corectld server
 #
-CHECK_SERVER_STATUS=$(/usr/local/sbin/corectld status 2>&1 | grep "Uptime:")
 
-if [[ "$CHECK_SERVER_STATUS" == "" ]]; then
-    # corectld is not running
-    echo "no"
-else
-    # corectld is running
-    echo "yes"
-fi
+INSTALLED_VERSION=v$(/usr/local/sbin/corectld version | grep "Version:" | head -1 | awk '{print $2}' | tr -d '\r')
+echo "${INSTALLED_VERSION}"
+

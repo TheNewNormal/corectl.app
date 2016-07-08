@@ -38,8 +38,7 @@ func check_for_corectl_blobs() {
     let resoucesPathFromApp = NSBundle.mainBundle().resourcePath!
     let bin_folder = resoucesPathFromApp + "/bin"
     
-    print(bin_folder)
-    
+    //
     let filePath1 = "/usr/local/sbin/corectl"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath1))
     {
@@ -50,7 +49,7 @@ func check_for_corectl_blobs() {
         print("corectl not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
-    
+    //
     let filePath2 = "/usr/local/sbin/corectld"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath2))
     {
@@ -61,7 +60,7 @@ func check_for_corectl_blobs() {
         print("corectld not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
-    
+    //
     let filePath3 = "/usr/local/sbin/corectld.runner"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath3))
     {
@@ -72,7 +71,30 @@ func check_for_corectl_blobs() {
         print("corectld.runner not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
+    //
+    let filePath4 = "/usr/local/sbin/corectld.nameserver"
+    if (NSFileManager.defaultManager().fileExistsAtPath(filePath4))
+    {
+        print("corectld.nameserver available");
+    }
+    else
+    {
+        print("corectld.nameserver not available");
+        runScript("copy_corectl_blobs.command", arguments: bin_folder )
+    }
+    //
+    let filePath5 = "/usr/local/sbin/corectld.store"
+    if (NSFileManager.defaultManager().fileExistsAtPath(filePath5))
+    {
+        print("corectld.store available");
+    }
+    else
+    {
+        print("corectld.store not available");
+        runScript("copy_corectl_blobs.command", arguments: bin_folder )
+    }
 }
+
 
 // Adds the app to the system's list of login items.
 // NOTE: This is a relatively janky way of doing this. Using a

@@ -17,4 +17,4 @@ printf '%s\n' "$my_password" | sudo -Sv > /dev/null 2>&1
 # copy blobs
 sudo mkdir -p /usr/local/sbin > /dev/null 2>&1
 echo "Copying files ..."
-sudo cp -f "${res_folder}"/* /usr/local/sbin
+sudo cp -f "${res_folder}"/* /usr/local/sbin/
