@@ -63,33 +63,47 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // restart corectld server
     @IBAction func Restart(sender: NSMenuItem) {
         
+        let menuItem : NSStatusItem = statusItem
+        
+        let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
+        let status = shell(script, arguments: [])
+        NSLog("corectld status: '%@'",status)
         //
-        let alert: NSAlert = NSAlert()
-        alert.messageText = "Restarting Corectld server will halt all your running VMs !!!"
-        alert.informativeText = "Are you sure you want to do that?"
-        alert.alertStyle = NSAlertStyle.WarningAlertStyle
-        alert.addButtonWithTitle("OK")
-        alert.addButtonWithTitle("Cancel")
-        if alert.runModal() == NSAlertFirstButtonReturn {
-            // if OK clicked
-            // send a notification on to the screen
-            print("Restarting corectld server")
-            let notification: NSUserNotification = NSUserNotification()
-            notification.title = "Restarting Corectld server"
-            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
-        
-            let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
-        
-            // stop corectld server
-            ServerStop()
-            ServerStop()
-
+        if (status == "no") {
             menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
             // start corectld server
             ServerStartShell()
             //
             menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
+        }
+        else {
+            //
+            let alert: NSAlert = NSAlert()
+            alert.messageText = "Restarting Corectld server will halt all your running VMs !!!"
+            alert.informativeText = "Are you sure you want to do that?"
+            alert.alertStyle = NSAlertStyle.WarningAlertStyle
+            alert.addButtonWithTitle("OK")
+            alert.addButtonWithTitle("Cancel")
+            if alert.runModal() == NSAlertFirstButtonReturn {
+                // if OK clicked
+                // send a notification on to the screen
+                print("Restarting corectld server")
+                let notification: NSUserNotification = NSUserNotification()
+                notification.title = "Restarting Corectld server"
+                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        
+                menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
+        
+                // stop corectld server
+                ServerStop()
+                ServerStop()
+
+                menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
+                // start corectld server
+                ServerStartShell()
+                //
+                menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
+            }
         }
     }
     
@@ -193,6 +207,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // stop corectld server
             ServerStop()
         
+            // clean up - kill all corectld processes
+            runScript("halt_corectld.command", arguments: "" )
+            
             // exit App
             exit(0)
         }
