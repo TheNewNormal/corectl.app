@@ -47,9 +47,9 @@ Under menu you will be able:
 
 - [TheNewNormal](http://github.com/TheNewNormal) org projects:
 
-  - **[CoreOS VM for macOS](https://github.com/TheNewNormal/coreos-osx)** (to be ported soon to use the latest corectl v0.7)
-  - **[Kubernetes Solo Cluster for macOS](https://github.com/TheNewNormal/kube-solo-osx)** (to be ported soon to use the latest corectl v0.7)
-  - **[Multi node Kubernetes Cluster for macOS](https://github.com/TheNewNormal/kube-cluster-osx)** (to be ported soon to use the latest corectl v0.7)
+  - **[CoreOS VM for macOS](https://github.com/TheNewNormal/coreos-osx)**
+  - **[Kubernetes Solo Cluster for macOS](https://github.com/TheNewNormal/kube-solo-osx)**
+  - **[Multi node Kubernetes Cluster for macOS](https://github.com/TheNewNormal/kube-cluster-osx)**
 
 ## Contributing
 
