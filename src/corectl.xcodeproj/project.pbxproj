@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 47;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1318E2041D302A3400EC75E9 /* halt_corectld.command in Resources */ = {isa = PBXBuildFile; fileRef = 1318E2031D302A3400EC75E9 /* halt_corectld.command */; };
+		13278FF81D32A6B5001EF5F4 /* check_corectl_app_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 13278FF71D32A6B5001EF5F4 /* check_corectl_app_version.command */; };
 		134476021D2E5F220035B3B9 /* check_active_vms.command in Resources */ = {isa = PBXBuildFile; fileRef = 134476011D2E5F220035B3B9 /* check_active_vms.command */; };
 		134DD75C1D2FEBF100E60CDE /* check_corectld_status.command in Resources */ = {isa = PBXBuildFile; fileRef = 134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */; };
 		134DD75E1D300CE400E60CDE /* check_corectld_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 134DD75D1D300CE400E60CDE /* check_corectld_version.command */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		1318E2031D302A3400EC75E9 /* halt_corectld.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = halt_corectld.command; sourceTree = "<group>"; };
+		13278FF71D32A6B5001EF5F4 /* check_corectl_app_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectl_app_version.command; sourceTree = "<group>"; };
 		134476011D2E5F220035B3B9 /* check_active_vms.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_active_vms.command; sourceTree = "<group>"; };
 		134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectld_status.command; sourceTree = "<group>"; };
 		134DD75D1D300CE400E60CDE /* check_corectld_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectld_version.command; sourceTree = "<group>"; };
@@ -92,12 +94,13 @@
 				137597641D2BD5A5000CB88F /* copy_corectl_blobs.command */,
 				134476011D2E5F220035B3B9 /* check_active_vms.command */,
 				1375976E1D2C05AA000CB88F /* start_corectld.command */,
-				1318E2031D302A3400EC75E9 /* halt_corectld.command */,
 				134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */,
-				134DD75D1D300CE400E60CDE /* check_corectld_version.command */,
+				1318E2031D302A3400EC75E9 /* halt_corectld.command */,
 				136605361D23CCB200D497A0 /* fetch_latest_iso_alpha.command */,
 				136605411D23E85800D497A0 /* fetch_latest_iso_beta.command */,
 				136605421D23E85800D497A0 /* fetch_latest_iso_stable.command */,
+				13278FF71D32A6B5001EF5F4 /* check_corectl_app_version.command */,
+				134DD75D1D300CE400E60CDE /* check_corectld_version.command */,
 				134F3CEB1D2C2270002B9668 /* check_blobs_version.command */,
 				137597621D2BC9CF000CB88F /* update_corectl_blobs.command */,
 				13BC96BD1D2D0351006D27B3 /* check_sudo_password.command */,
@@ -190,7 +193,7 @@
 				};
 			};
 			buildConfigurationList = 13CAFC211D2272B000E57ED4 /* Build configuration list for PBXProject "corectl" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 6.3";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
@@ -216,6 +219,7 @@
 				1375975F1D2BA816000CB88F /* get_go_binaries in Resources */,
 				136605441D23E85800D497A0 /* fetch_latest_iso_stable.command in Resources */,
 				13CAFC2C1D2272B000E57ED4 /* Assets.xcassets in Resources */,
+				13278FF81D32A6B5001EF5F4 /* check_corectl_app_version.command in Resources */,
 				1318E2041D302A3400EC75E9 /* halt_corectld.command in Resources */,
 				13CAFC2F1D2272B000E57ED4 /* MainMenu.xib in Resources */,
 				134DD75E1D300CE400E60CDE /* check_corectld_version.command in Resources */,
