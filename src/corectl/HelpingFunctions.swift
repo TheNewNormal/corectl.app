@@ -34,7 +34,7 @@ func check_sudo_password2() {
 
 
 // check if corectl blobs exist
-func check_for_corectl_blobs() {
+func check_that_corectl_blobs_are_in_place() {
     let resoucesPathFromApp = NSBundle.mainBundle().resourcePath!
     let bin_folder = resoucesPathFromApp + "/bin"
     
