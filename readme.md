@@ -38,6 +38,7 @@ Under menu you will be able:
 - Shows Server version
 - Shows Active VMs
 - Restart the server
+- Check for new App version
 - Check and download `corectl` new version
 - Fetch latest CoreOS ISO images, which will be stored under `~/.coreos` folder and can be shared between all VMs.
 
