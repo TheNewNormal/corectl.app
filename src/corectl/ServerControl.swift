@@ -46,7 +46,7 @@ func ServerStartShell() {
         //
         let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
         let status = shell(script, arguments: [])
-        NSLog("corectld status: '%@'",status)
+        NSLog("corectld running status: '%@'",status)
         //
         if (status == "no"){
             let menuItem : NSStatusItem = statusItem
@@ -82,4 +82,31 @@ func ServerStop() {
     menuItem.menu?.itemWithTag(1)?.title = "Server is off"
     menuItem.menu?.itemWithTag(1)?.state = NSOffState
 }
+
+
+// restart corectld server
+func RestartServer() {
+    //
+    let menuItem : NSStatusItem = statusItem
+    
+    // send a notification on to the screen
+    print("Restarting corectld server")
+    let notification: NSUserNotification = NSUserNotification()
+    notification.title = "Restarting Corectld server"
+    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+    
+    menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
+    
+    // stop corectld server
+    ServerStop()
+    ServerStop()
+    
+    menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
+    // start corectld server
+    ServerStartShell()
+    //
+    menuItem.menu?.itemWithTag(3)?.title = "Check for App updates"
+    menuItem.menu?.itemWithTag(4)?.title = "Check for corectld updates"
+}
+
 

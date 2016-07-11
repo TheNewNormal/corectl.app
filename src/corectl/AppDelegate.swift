@@ -11,7 +11,6 @@ import Foundation
 import Security
 
 var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
-var download_blobs = "no"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -25,6 +24,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         statusItem.image = icon
         statusItem.menu = statusMenu
         
+        // Initial checks and sets after applicationDidFinishLaunching
+        
         // check if App runs from DMG
         check_for_dmg()
         
@@ -36,15 +37,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // check if corectl blobs are in place
         check_that_corectl_blobs_are_in_place()
+        
+        // check for corectl blobs latest version on github
+        check_for_corectl_blobs_github("yes")
     
         // start corectld server
         ServerStartShell()
         
-        // check for latest corectl.app and corectl blobs release on github
-        check_for_corectl_app_blobs_github(nil)
+        // check for latest corectl.app release on github
+        check_for_corectl_app_github("yes")
         
-        // check for latest corectl blobs on github
-        _ = NSTimer.scheduledTimerWithTimeInterval(3600.0, target: self, selector: #selector(AppDelegate.check_for_corectl_blobs_github), userInfo: nil, repeats: true)
+        // Timer
+        // check for latest app and corectl blobs on github and update menu items
+        _ = NSTimer.scheduledTimerWithTimeInterval(14400.0, target: self, selector: #selector(AppDelegate.check_for_corectl_app_corectld_github), userInfo: nil, repeats: true)
         
         // check for server status
         _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.server_status), userInfo: nil, repeats: true)
@@ -68,7 +73,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //
         let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
         let status = shell(script, arguments: [])
-        NSLog("corectld status: '%@'",status)
+        NSLog("corectld running status: '%@'",status)
         //
         if (status == "no") {
             menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
@@ -86,41 +91,39 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             alert.addButtonWithTitle("OK")
             alert.addButtonWithTitle("Cancel")
             if alert.runModal() == NSAlertFirstButtonReturn {
-                // if OK clicked
-                // send a notification on to the screen
-                print("Restarting corectld server")
-                let notification: NSUserNotification = NSUserNotification()
-                notification.title = "Restarting Corectld server"
-                NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
-        
-                menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
-        
-                // stop corectld server
-                ServerStop()
-                ServerStop()
-
-                menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
-                // start corectld server
-                ServerStartShell()
-                //
-                menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
+                // if OK clicked run restart server
+                RestartServer()
             }
         }
     }
+    ////
     
-    
-    // check and download updates for corectl
-    @IBAction func checkForUpdates(sender: NSMenuItem) {
+    // check and download updates for corectld and App
+    // check fo updates for App
+    @IBAction func checkForAppUpdates(sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
-        notification.informativeText = "Updates for Corectl App/binaries will be checked"
+        notification.informativeText = "Updates for Corectl App will be checked"
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         
         // run check function
-        check_for_corectl_app_blobs_github("yes")
+        check_for_corectl_app_github("yes", runViaUpdateMenu: "yes")
     }
     
+    // check updates for corectld server
+    @IBAction func checkForCorectldUpdates(sender: NSMenuItem) {
+        // send a notification on to the screen
+        let notification: NSUserNotification = NSUserNotification()
+        notification.title = "Corectl"
+        notification.informativeText = "Updates for Corectld server will be checked"
+        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        
+        // run check function
+        check_for_corectl_blobs_github("yes", runViaUpdateMenu: "yes")
+        //download_test()
+    }
+    ////
     
     // fetch latest ISOs
     @IBAction func fetchLatestISOAlpha(sender: NSMenuItem) {
@@ -133,7 +136,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // run the script
         runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_alpha.command")
     }
-
+//
     @IBAction func fetchLatestISOBeta(sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
@@ -144,7 +147,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // run the script
         runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_beta.command")
     }
-    
+    //
     @IBAction func fetchLatestISOStable(sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
@@ -155,7 +158,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // run the script
         runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_stable.command")
     }
-    // fetch latest ISOs
+    //// fetch latest ISOs
 
     
     // About App
@@ -198,98 +201,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // Other funtions //
     
-    // check server status and update menu
-    func server_status() {
-        let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
-        let status = shell(script, arguments: [])
-        // NSLog("corectld status: '%@'",status)
-        //
-        if (status == "yes"){
-            let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(1)?.title = "Server is running"
-        }
-        else {
-            let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(1)?.title = "Server is Off"
-        }
-    }
-    
-    // check for corectl.app and corectl blobs update
-    func check_for_corectl_app_blobs_github(ShowPopUP: String?) {
-        //
-        print("Checking for corectl.app version on github ...")
-        let script = NSBundle.mainBundle().resourcePath! + "/check_corectl_app_version.command"
-        let latest_app_version = shell(script, arguments: [])
-        print("latest app version: " + latest_app_version)
-        //
-        let installed_app_version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")as? String
-        print("installed app version: " + installed_app_version!)
-        //
-        if (latest_app_version == "v" + installed_app_version!){
-            print("installed app is the same as the latest available on github ...")
-            // then we run a check for corectl blobs update
-            let script = NSBundle.mainBundle().resourcePath! + "/check_blobs_version.command"
-            let status = shell(script, arguments: [])
-            
-            if (status == "yes"){
-                print("corectl tools update is available ...")
-                //
-                download_corectl_blobs()
-            }
-            else
-            {
-                if (ShowPopUP == "yes") {
-                    let mText: String = "Corectl for macOS"
-                    let infoText: String = "You are up-to-date ..."
-                    displayWithMessage(mText, infoText: infoText)
-                }
-            }
-        }
-        else {
-            print("app update is available ...")
-            //
-            let alert: NSAlert = NSAlert()
-            alert.messageText = "There is a new version available for the Corectl App !!!"
-            alert.informativeText = "Open download URL in your browser?"
-            alert.alertStyle = NSAlertStyle.WarningAlertStyle
-            alert.addButtonWithTitle("OK")
-            alert.addButtonWithTitle("Cancel")
-            if alert.runModal() == NSAlertFirstButtonReturn {
-                // if OK clicked
-                let url: String = ["https://github.com/TheNewNormal/corectl.app/releases"].componentsJoinedByString("")
-                NSWorkspace.sharedWorkspace().openURL(NSURL(string: url)!)
-            }
-        }
-    }
-    
-    // download corectl blobs
-    func download_corectl_blobs() {
-        let alert: NSAlert = NSAlert()
-        alert.messageText = "There is a new version available for the Corectl tools !!!"
-        alert.informativeText = "Do you want to download them?"
-        alert.alertStyle = NSAlertStyle.WarningAlertStyle
-        alert.addButtonWithTitle("OK")
-        alert.addButtonWithTitle("Cancel")
-        if alert.runModal() == NSAlertFirstButtonReturn {
-            // run update script
-            runTerminal(NSBundle.mainBundle().resourcePath! + "/update_corectl_blobs.command")
-        }
-    }
-    
-    // check for corectl blobs update and change menu item text
-    func check_for_corectl_blobs_github(showPopUp:String?=nil) {
-        print("Checking for blobs on github ...")
-        let script = NSBundle.mainBundle().resourcePath! + "/check_blobs_version.command"
-        let status = shell(script, arguments: [])
-        NSLog("update status: '%@'",status)
-        //
-        if (status == "yes"){
-            let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(3)?.title = "Download updates..."
-            download_blobs = "yes"
-        }
-    }
-    
     // check if app runs from dmg
     func check_for_dmg() {
         // get the App's main bundle path
@@ -308,6 +219,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             NSApplication.sharedApplication().terminate(self)
         }
     }
+    ////
+    
+    // Timer functions
+    // Check/Update menu items
+    // check server status and update menu
+    func server_status() {
+        let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
+        let status = shell(script, arguments: [])
+        // NSLog("corectld running status: '%@'",status)
+        //
+        if (status == "yes"){
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(1)?.title = "Server is running"
+        }
+        else {
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(1)?.title = "Server is Off"
+        }
+    }
+    
+    
+    // App latest version checks
+    func check_for_corectl_app_corectld_github() {
+        // check for corectl App update every hour
+        check_for_corectl_app_github()
+        // check for corectl blobs update every hour
+        check_for_corectl_blobs_github()
+    }
+    
     
     // show active vms in the menu
     func active_vms() {

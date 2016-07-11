@@ -689,29 +689,36 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="7F0-f8-uD9"/>
-                <menuItem title="Check for updates" tag="3" id="G6m-bG-AHV">
+                <menuItem title="Check for App updates" tag="3" id="G6m-bG-AHV">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
-                        <action selector="checkForUpdates:" target="Voe-Tx-rLC" id="ZGM-0U-UMz"/>
+                        <action selector="checkForAppUpdates:" target="Voe-Tx-rLC" id="YjE-3w-5cB"/>
                     </connections>
                 </menuItem>
+                <menuItem title="Check for corectld updates" tag="4" id="J0q-Qe-LjV">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="checkForCorectldUpdates:" target="Voe-Tx-rLC" id="e4B-r2-SOH"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="ZUp-br-6Zv"/>
                 <menuItem title="Fetch latest CoreOS ISO" id="cxS-wy-CSq">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Fetch latest CoreOS ISO" id="WjL-bi-BbT">
                         <items>
-                            <menuItem title="Alpha" id="0SQ-P4-rTq">
+                            <menuItem title="Alpha" tag="7" id="0SQ-P4-rTq">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="fetchLatestISOAlpha:" target="Voe-Tx-rLC" id="DCJ-Zh-pW9"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Beta" id="KEW-NR-3cp">
+                            <menuItem title="Beta" tag="8" id="KEW-NR-3cp">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="fetchLatestISOBeta:" target="Voe-Tx-rLC" id="3sE-Lg-VcR"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Stable" id="gJK-EZ-iV0">
+                            <menuItem title="Stable" tag="9" id="gJK-EZ-iV0">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="fetchLatestISOStable:" target="Voe-Tx-rLC" id="xjn-If-zaL"/>
@@ -721,25 +728,25 @@
                     </menu>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="6MD-ne-tfW"/>
-                <menuItem title="Preferences" tag="4" id="jv0-Md-oMt">
+                <menuItem title="Preferences" tag="5" id="jv0-Md-oMt">
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="gfq-fY-qL1"/>
-                <menuItem title="About" id="0B9-QX-t5T">
+                <menuItem title="About" tag="6" id="0B9-QX-t5T">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="About:" target="Voe-Tx-rLC" id="KgO-Vx-xhu"/>
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="HkQ-9J-TSn"/>
-                <menuItem title="Quit Corectl" tag="3" alternate="YES" id="Nfe-LP-eNg">
+                <menuItem title="Quit Corectl" tag="100" alternate="YES" id="Nfe-LP-eNg">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="Quit:" target="Voe-Tx-rLC" id="1hY-bR-e5f"/>
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-906.5" y="95.5"/>
+            <point key="canvasLocation" x="-1274" y="84.5"/>
         </menu>
     </objects>
 </document>
