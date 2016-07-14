@@ -142,13 +142,13 @@ func download_corectl_blobs_github(runViaUpdateMenu:String?=nil) {
 
 func download_test() {
     
-    if let audioUrl = NSURL(string: "https://github.com/TheNewNormal/corectl/releases/download/v0.7.5/corectl-v0.7.5-macOS-amd64.tar.gz") {
+    if let audioUrl = NSURL(string: "https://github.com/TheNewNormal/corectl/releases/download/v0.7.9/corectl-v0.7.9-macOS-amd64.tar.gz") {
         
         // then lets create your document folder url
         let documentsDirectoryURL =  NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
         
         // lets create your destination file url
-        let destinationUrl = documentsDirectoryURL.URLByAppendingPathComponent(audioUrl.lastPathComponent ?? "corectl-v0.7.5-macOS-amd64.tar.gz")
+        let destinationUrl = documentsDirectoryURL.URLByAppendingPathComponent(audioUrl.lastPathComponent ?? "corectl-v0.7.9-macOS-amd64.tar.gz")
         print(destinationUrl)
         
         // to check if it exists before downloading it

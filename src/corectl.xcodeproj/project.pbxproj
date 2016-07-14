@@ -37,6 +37,7 @@
 		13CAFC2A1D2272B000E57ED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CAFC291D2272B000E57ED4 /* AppDelegate.swift */; };
 		13CAFC2C1D2272B000E57ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */; };
 		13CAFC2F1D2272B000E57ED4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2D1D2272B000E57ED4 /* MainMenu.xib */; };
+		13F568C41D380FDA006BF6D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13F568C31D380FDA006BF6D9 /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13CAFC2E1D2272B000E57ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13CAFC301D2272B000E57ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13F568C31D380FDA006BF6D9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +156,7 @@
 				1375976C1D2BF361000CB88F /* Keychain.swift */,
 				13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */,
 				13CAFC2D1D2272B000E57ED4 /* MainMenu.xib */,
+				13F568C31D380FDA006BF6D9 /* Main.storyboard */,
 				13CAFC301D2272B000E57ED4 /* Info.plist */,
 			);
 			path = corectl;
@@ -222,6 +225,7 @@
 				1375975F1D2BA816000CB88F /* get_go_binaries in Resources */,
 				136605441D23E85800D497A0 /* fetch_latest_iso_stable.command in Resources */,
 				13CAFC2C1D2272B000E57ED4 /* Assets.xcassets in Resources */,
+				13F568C41D380FDA006BF6D9 /* Main.storyboard in Resources */,
 				13278FF81D32A6B5001EF5F4 /* check_corectl_app_version.command in Resources */,
 				1318E2041D302A3400EC75E9 /* halt_corectld.command in Resources */,
 				13CAFC2F1D2272B000E57ED4 /* MainMenu.xib in Resources */,

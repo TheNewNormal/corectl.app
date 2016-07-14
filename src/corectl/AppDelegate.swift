@@ -164,7 +164,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // About App
     @IBAction func About(sender: NSMenuItem) {
         let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")as? String
-        let mText: String = "Corectl for macOS v" + version!
+        let mText: String = "Corectl App for macOS v" + version!
         let infoText: String = "It is a simple wrapper around the corectld server, allows to have a control via the Status Bar App !!!"
         displayWithMessage(mText, infoText: infoText)
     }

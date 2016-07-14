@@ -695,7 +695,7 @@
                         <action selector="checkForAppUpdates:" target="Voe-Tx-rLC" id="YjE-3w-5cB"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Check for corectld updates" tag="4" id="J0q-Qe-LjV">
+                <menuItem title="Check for corectl updates" tag="4" id="J0q-Qe-LjV">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkForCorectldUpdates:" target="Voe-Tx-rLC" id="e4B-r2-SOH"/>
@@ -739,7 +739,10 @@
                     </connections>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="HkQ-9J-TSn"/>
-                <menuItem title="Quit Corectl" tag="100" alternate="YES" id="Nfe-LP-eNg">
+                <menuItem title="Quit Corectl App" tag="100" alternate="YES" id="Nfe-LP-eNg">
+                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="Quit:" target="Voe-Tx-rLC" id="1hY-bR-e5f"/>

@@ -2,7 +2,7 @@
 #
 
 # check for saved sudo password
-my_password=$(security 2>&1 > /dev/null find-generic-password -wa coreosctl-app)
+my_password=$(security 2>&1 > /dev/null find-generic-password -wa coreosctl-app2)
 
 if [[ "${my_password}" == *"could not be found"* ]]
 then
