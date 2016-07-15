@@ -14,6 +14,8 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="corectl" customModuleProvider="target">
             <connections>
+                <outlet property="DownloadCorectlWindow" destination="R9g-jD-yzq" id="hBn-qc-MKY"/>
+                <outlet property="Window" destination="R9g-jD-yzq" id="QYN-ei-oce"/>
                 <outlet property="statusMenu" destination="czS-Km-Bdb" id="8Tz-9A-4wy"/>
             </connections>
         </customObject>
@@ -727,6 +729,9 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Item" id="HBy-aq-IXA">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
                 <menuItem isSeparatorItem="YES" id="6MD-ne-tfW"/>
                 <menuItem title="Preferences" tag="5" id="jv0-Md-oMt">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -749,7 +754,18 @@ Gw
                     </connections>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="-1274" y="84.5"/>
+            <point key="canvasLocation" x="-2264" y="43.5"/>
         </menu>
+        <window identifier="1" title="Download Corectl tools" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="R9g-jD-yzq" userLabel="Window">
+            <windowStyleMask key="styleMask" titled="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES"/>
+            <rect key="contentRect" x="650" y="581" width="536" height="333"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
+            <view key="contentView" id="D7F-Gk-XsJ">
+                <rect key="frame" x="0.0" y="0.0" width="536" height="333"/>
+                <autoresizingMask key="autoresizingMask"/>
+            </view>
+            <point key="canvasLocation" x="-1766" y="96.5"/>
+        </window>
     </objects>
 </document>

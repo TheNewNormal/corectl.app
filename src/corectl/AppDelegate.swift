@@ -10,17 +10,30 @@ import Cocoa
 import Foundation
 import Security
 
+
 var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
+
+//var DnISOViewController = FetchCorectlViewController(nibName: "FetchCorectlViewController", bundle: NSBundle.mainBundle())
+
+var DnISOViewController = FetchCorectlViewController()
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    @IBOutlet weak var window: NSWindow!
+    
+    @IBOutlet weak var Window: NSWindow!
+    
     @IBOutlet weak var statusMenu: NSMenu!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        let icon = NSImage(named: "StatusItemIcon")
         
+        // show
+        //Window.makeKeyAndOrderFront(self)
+        //NSApp.activateIgnoringOtherApps(true)
+        // Hide
+        Window.orderOut(self)
+        
+        //
+        let icon = NSImage(named: "StatusItemIcon")
         statusItem.image = icon
         statusItem.menu = statusMenu
         
@@ -120,8 +133,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         
         // run check function
-        check_for_corectl_blobs_github("yes", runViaUpdateMenu: "yes")
+        //check_for_corectl_blobs_github("yes", runViaUpdateMenu: "yes")
         //download_test()
+        _ = FetchCorectlViewController.self
+        
+        
     }
     ////
     
@@ -134,8 +150,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         
         // run the script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_alpha.command")
+        //runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_alpha.command")
+        
+        // show Window
+        Window.makeKeyAndOrderFront(self)
+        NSApp.activateIgnoringOtherApps(true)
+        
+        self.Window.contentView!.addSubview(DnISOViewController.view)
+        DnISOViewController.view.frame = self.Window.contentView!.bounds
+        
+        // Hide Window
+        //Window.orderOut(self)
     }
+    
 //
     @IBAction func fetchLatestISOBeta(sender: NSMenuItem) {
         // send a notification on to the screen
@@ -200,6 +227,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     // Other funtions //
+    
+    func HideWindow() {
+        // Hide Window
+        Window.orderOut(self)
+    }
     
     // check if app runs from dmg
     func check_for_dmg() {

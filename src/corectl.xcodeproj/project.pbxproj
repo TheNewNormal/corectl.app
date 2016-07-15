@@ -10,6 +10,8 @@
 		1318E2041D302A3400EC75E9 /* halt_corectld.command in Resources */ = {isa = PBXBuildFile; fileRef = 1318E2031D302A3400EC75E9 /* halt_corectld.command */; };
 		13278FF81D32A6B5001EF5F4 /* check_corectl_app_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 13278FF71D32A6B5001EF5F4 /* check_corectl_app_version.command */; };
 		134476021D2E5F220035B3B9 /* check_active_vms.command in Resources */ = {isa = PBXBuildFile; fileRef = 134476011D2E5F220035B3B9 /* check_active_vms.command */; };
+		134CD4DF1D39060E003CE5A3 /* FetchCorectlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134CD4DD1D39060E003CE5A3 /* FetchCorectlViewController.swift */; };
+		134CD4E01D39060E003CE5A3 /* FetchCorectlViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 134CD4DE1D39060E003CE5A3 /* FetchCorectlViewController.xib */; };
 		134DD75C1D2FEBF100E60CDE /* check_corectld_status.command in Resources */ = {isa = PBXBuildFile; fileRef = 134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */; };
 		134DD75E1D300CE400E60CDE /* check_corectld_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 134DD75D1D300CE400E60CDE /* check_corectld_version.command */; };
 		134F3CEC1D2C2270002B9668 /* check_blobs_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 134F3CEB1D2C2270002B9668 /* check_blobs_version.command */; };
@@ -36,14 +38,15 @@
 		13BC96BE1D2D0351006D27B3 /* check_sudo_password.command in Resources */ = {isa = PBXBuildFile; fileRef = 13BC96BD1D2D0351006D27B3 /* check_sudo_password.command */; };
 		13CAFC2A1D2272B000E57ED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CAFC291D2272B000E57ED4 /* AppDelegate.swift */; };
 		13CAFC2C1D2272B000E57ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */; };
-		13CAFC2F1D2272B000E57ED4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2D1D2272B000E57ED4 /* MainMenu.xib */; };
-		13F568C41D380FDA006BF6D9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 13F568C31D380FDA006BF6D9 /* Main.storyboard */; };
+		13CAFC2F1D2272B000E57ED4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2D1D2272B000E57ED4 /* MainMenu.xib */; settings = {ASSET_TAGS = (1, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1318E2031D302A3400EC75E9 /* halt_corectld.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = halt_corectld.command; sourceTree = "<group>"; };
 		13278FF71D32A6B5001EF5F4 /* check_corectl_app_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectl_app_version.command; sourceTree = "<group>"; };
 		134476011D2E5F220035B3B9 /* check_active_vms.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_active_vms.command; sourceTree = "<group>"; };
+		134CD4DD1D39060E003CE5A3 /* FetchCorectlViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchCorectlViewController.swift; sourceTree = "<group>"; };
+		134CD4DE1D39060E003CE5A3 /* FetchCorectlViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FetchCorectlViewController.xib; sourceTree = "<group>"; };
 		134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectld_status.command; sourceTree = "<group>"; };
 		134DD75D1D300CE400E60CDE /* check_corectld_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectld_version.command; sourceTree = "<group>"; };
 		134F3CEB1D2C2270002B9668 /* check_blobs_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_blobs_version.command; sourceTree = "<group>"; };
@@ -73,7 +76,6 @@
 		13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13CAFC2E1D2272B000E57ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13CAFC301D2272B000E57ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		13F568C31D380FDA006BF6D9 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,7 +158,8 @@
 				1375976C1D2BF361000CB88F /* Keychain.swift */,
 				13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */,
 				13CAFC2D1D2272B000E57ED4 /* MainMenu.xib */,
-				13F568C31D380FDA006BF6D9 /* Main.storyboard */,
+				134CD4DD1D39060E003CE5A3 /* FetchCorectlViewController.swift */,
+				134CD4DE1D39060E003CE5A3 /* FetchCorectlViewController.xib */,
 				13CAFC301D2272B000E57ED4 /* Info.plist */,
 			);
 			path = corectl;
@@ -188,6 +191,10 @@
 		13CAFC1E1D2272B000E57ED4 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				KnownAssetTags = (
+					1,
+					2,
+				);
 				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "The New Normal";
@@ -225,11 +232,11 @@
 				1375975F1D2BA816000CB88F /* get_go_binaries in Resources */,
 				136605441D23E85800D497A0 /* fetch_latest_iso_stable.command in Resources */,
 				13CAFC2C1D2272B000E57ED4 /* Assets.xcassets in Resources */,
-				13F568C41D380FDA006BF6D9 /* Main.storyboard in Resources */,
 				13278FF81D32A6B5001EF5F4 /* check_corectl_app_version.command in Resources */,
 				1318E2041D302A3400EC75E9 /* halt_corectld.command in Resources */,
 				13CAFC2F1D2272B000E57ED4 /* MainMenu.xib in Resources */,
 				134DD75E1D300CE400E60CDE /* check_corectld_version.command in Resources */,
+				134CD4E01D39060E003CE5A3 /* FetchCorectlViewController.xib in Resources */,
 				136605391D23CCB200D497A0 /* functions.sh in Resources */,
 				137597651D2BD5A6000CB88F /* copy_corectl_blobs.command in Resources */,
 				1375975B1D2BA78E000CB88F /* bin in Resources */,
@@ -251,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134CD4DF1D39060E003CE5A3 /* FetchCorectlViewController.swift in Sources */,
 				136C48121D33A79C001B0DA3 /* Updates.swift in Sources */,
 				13BC96BC1D2CF931006D27B3 /* ServerControl.swift in Sources */,
 				13BC96B41D2CF42C006D27B3 /* Notifications.swift in Sources */,
