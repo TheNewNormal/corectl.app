@@ -25,11 +25,10 @@ class FetchCorectlViewController: NSViewController {
     
     @IBAction func Close(sender: NSButton) {
         
-        // Hide Window
-        NSApplication.sharedApplication().windows.last!.close()
+        print("Close main window")
         
-        
-        //AppDelegate.HideWindow(AppDelegate)
+        // Hide Main Window
+        NSApplication.sharedApplication().mainWindow?.close()
         
     }
 }

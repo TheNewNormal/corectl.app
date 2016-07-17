@@ -29,7 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // show
         //Window.makeKeyAndOrderFront(self)
         //NSApp.activateIgnoringOtherApps(true)
-        // Hide
+        
+        // Hide main Window
         Window.orderOut(self)
         
         //
@@ -156,11 +157,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         Window.makeKeyAndOrderFront(self)
         NSApp.activateIgnoringOtherApps(true)
         
+        // open FetchCorectlViewController
         self.Window.contentView!.addSubview(DnISOViewController.view)
         DnISOViewController.view.frame = self.Window.contentView!.bounds
-        
-        // Hide Window
-        //Window.orderOut(self)
     }
     
 //
@@ -173,6 +172,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // run the script
         runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_beta.command")
+        
     }
     //
     @IBAction func fetchLatestISOStable(sender: NSMenuItem) {
