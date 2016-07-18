@@ -24,4 +24,4 @@ else
 fi
 
 echo " "
-pause 'Press [Enter] key to continue...'
+

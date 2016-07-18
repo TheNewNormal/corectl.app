@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10116"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -729,9 +729,6 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Item" id="HBy-aq-IXA">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
                 <menuItem isSeparatorItem="YES" id="6MD-ne-tfW"/>
                 <menuItem title="Preferences" tag="5" id="jv0-Md-oMt">
                     <modifierMask key="keyEquivalentModifierMask"/>
@@ -756,16 +753,16 @@ Gw
             </items>
             <point key="canvasLocation" x="-2264" y="43.5"/>
         </menu>
-        <window identifier="1" title="Download Corectl tools" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="R9g-jD-yzq" userLabel="Window">
-            <windowStyleMask key="styleMask" titled="YES" closable="YES"/>
+        <window identifier="1" title="Corectl App" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="R9g-jD-yzq" userLabel="Window">
+            <windowStyleMask key="styleMask" titled="YES"/>
             <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="353" y="467" width="536" height="333"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="800"/>
+            <rect key="contentRect" x="353" y="467" width="589" height="481"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="D7F-Gk-XsJ">
-                <rect key="frame" x="0.0" y="0.0" width="536" height="333"/>
+                <rect key="frame" x="0.0" y="0.0" width="589" height="481"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
-            <point key="canvasLocation" x="-1766" y="96.5"/>
+            <point key="canvasLocation" x="-1739.5" y="170.5"/>
         </window>
     </objects>
 </document>

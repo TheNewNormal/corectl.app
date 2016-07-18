@@ -9,6 +9,7 @@
 import Foundation
 import Cocoa
 
+
 // App latest version checks
 // check for corectl App update/change menu item text
 func check_for_corectl_app_github(showPopUp:String?=nil, runViaUpdateMenu:String?=nil) {
@@ -85,7 +86,7 @@ func check_for_corectl_blobs_github(showPopUp:String?=nil, runViaUpdateMenu:Stri
     //
     if (status == "yes"){
         if (showPopUp == "yes") {
-            // we run via mneu, let's pass "yes" then
+            // we run via menu, let's pass "yes" then
             download_corectl_blobs_github("yes")
         }
         else {
@@ -117,21 +118,34 @@ func download_corectl_blobs_github(runViaUpdateMenu:String?=nil) {
     if alert.runModal() == NSAlertFirstButtonReturn {
         // if OK clicked
         // run update script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/update_corectl_blobs.command")
-        //
-//        if (runViaUpdateMenu == "yes"){
-            // restart corectld server if no VMs are running
-//            let script = NSBundle.mainBundle().resourcePath! + "/check_active_vms.command"
-//            let status: String = shell(script, arguments: [])
-//            NSLog("Active VMs: '%@'",status)
+        //runTerminal(NSBundle.mainBundle().resourcePath! + "/update_corectl_blobs.command")
+        
+        
+        // pass coreos channel
+        pass_to_TasksViewController = "update_corectl_blobs"
+        
+        // show main window
+        appDelegate().showMainWindow()
+        
+        // set wait queue
+        wait_queue = 0
+        
+        while wait_queue == 1 {
             //
-//            if ( status == "0" ){
-//                RestartServer()
-//            }
-            // restore menu item
-//            let menuItem : NSStatusItem = statusItem
-//            menuItem.menu?.itemWithTag(4)?.title = "Check for corectld updates"
-//        }
+            if (runViaUpdateMenu == "yes"){
+                // restart corectld server if no VMs are running
+                let script = NSBundle.mainBundle().resourcePath! + "/check_active_vms.command"
+                let status: String = shell(script, arguments: [])
+                NSLog("Active VMs: '%@'",status)
+                //
+                if ( status == "0" ){
+                    RestartServer()
+                }
+                // restore menu item
+                let menuItem : NSStatusItem = statusItem
+                menuItem.menu?.itemWithTag(4)?.title = "Check for corectld updates"
+            }
+        }
     }
     else {
         let menuItem : NSStatusItem = statusItem
@@ -140,7 +154,17 @@ func download_corectl_blobs_github(runViaUpdateMenu:String?=nil) {
 }
 
 
+//
+func appDelegate () -> AppDelegate
+{
+    return NSApplication.sharedApplication().delegate as! AppDelegate
+}
+
+
+/////
 func download_test() {
+    
+    // does download in background, no progress bar
     
     if let audioUrl = NSURL(string: "https://github.com/TheNewNormal/corectl/releases/download/v0.7.9/corectl-v0.7.9-macOS-amd64.tar.gz") {
         

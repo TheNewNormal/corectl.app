@@ -9,12 +9,14 @@ source "${DIR}"/functions.sh
 # get remote version
 CORECTL_VERSION=$(curl -Ss https://api.github.com/repos/TheNewNormal/corectl/releases | grep "tag_name" | awk '{print $2}' | sed -e 's/"\(.*\)"./\1/' | head -1)
 #
-mkdir -p ~/tmp/corectl > /dev/null 2>&1
-cd ~/tmp/corectl
+rm -fr ~/.coreos/tmp/corectl
+mkdir -p ~/.coreos/tmp/corectl > /dev/null 2>&1
+cd ~/.coreos/tmp/corectl
 
 # download latest version of corectl for macOS
 echo "Downloading corectl $CORECTL_VERSION for macOS"
-curl -L -o corectl.tar.gz https://github.com/TheNewNormal/corectl/releases/download/$CORECTL_VERSION/corectl-$CORECTL_VERSION-macOS-amd64.tar.gz
+curl -L -o corectl.tar.gz https://github.com/TheNewNormal/corectl/releases/download/"$CORECTL_VERSION"/corectl-"$CORECTL_VERSION"-macOS-amd64.tar.gz | tee ~/.coreos/tmp/corectl_download
+
 tar xzvf corectl.tar.gz > /dev/null 2>&1
 rm -f corectl.tar.gz
 chmod +x *
@@ -31,7 +33,7 @@ sudo cp -f * /usr/local/sbin/
 
 #
 cd ~/
-rm -fr ~/tmp/corectl > /dev/null 2>&1
+rm -fr ~/.coreos/tmp/corectl > /dev/null 2>&1
 
 #
 echo "Download has finished !!!"
@@ -56,5 +58,5 @@ else
 fi
 
 echo " "
-pause 'Press [Enter] key to continue...'
+#pause 'Press [Enter] key to continue...'
 

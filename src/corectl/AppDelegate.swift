@@ -13,9 +13,11 @@ import Security
 
 var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
 
-//var DnISOViewController = FetchCorectlViewController(nibName: "FetchCorectlViewController", bundle: NSBundle.mainBundle())
+var wait_queue = 0
 
-var DnISOViewController = FetchCorectlViewController()
+var pass_to_TasksViewController = "nothing"
+
+//var download_corectl_blobs_github = "no"
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -25,10 +27,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var statusMenu: NSMenu!
 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        
-        // show
-        //Window.makeKeyAndOrderFront(self)
-        //NSApp.activateIgnoringOtherApps(true)
         
         // Hide main Window
         Window.orderOut(self)
@@ -134,11 +132,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         
         // run check function
-        //check_for_corectl_blobs_github("yes", runViaUpdateMenu: "yes")
-        //download_test()
-        _ = FetchCorectlViewController.self
-        
-        
+        check_for_corectl_blobs_github("yes", runViaUpdateMenu: "yes")        
     }
     ////
     
@@ -149,20 +143,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         notification.title = "Corectl"
         notification.informativeText = "CoreOS Alpha ISO image will be updated"
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
-        
-        // run the script
-        //runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_alpha.command")
+
+        // pass coreos channel
+        pass_to_TasksViewController = "os_alpha"
         
         // show Window
-        Window.makeKeyAndOrderFront(self)
-        NSApp.activateIgnoringOtherApps(true)
-        
-        // open FetchCorectlViewController
-        self.Window.contentView!.addSubview(DnISOViewController.view)
-        DnISOViewController.view.frame = self.Window.contentView!.bounds
+        showMainWindow()
     }
     
-//
+    //
     @IBAction func fetchLatestISOBeta(sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
@@ -170,10 +159,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         notification.informativeText = "CoreOS Beta ISO image will be updated"
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         
-        // run the script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_beta.command")
+        // pass coreos channel
+        pass_to_TasksViewController = "os_beta"
         
+        // show Window
+        showMainWindow()
     }
+    
     //
     @IBAction func fetchLatestISOStable(sender: NSMenuItem) {
         // send a notification on to the screen
@@ -182,8 +174,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         notification.informativeText = "CoreOS Stable ISO image will be updated"
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         
-        // run the script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_stable.command")
+        // pass coreos channel
+        pass_to_TasksViewController = "os_stable"
+        
+        // show Window
+        showMainWindow()
     }
     //// fetch latest ISOs
 
@@ -228,10 +223,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // Other funtions //
     
-    func HideWindow() {
-        // Hide Window
-        Window.orderOut(self)
+    // show main window
+    func showMainWindow() {
+        // show Window
+        Window.makeKeyAndOrderFront(self)
+        NSApp.activateIgnoringOtherApps(true)
+        
+        // open FetchCorectlViewController
+        let TasksVC = TasksViewController()
+        self.Window.contentView!.addSubview(TasksVC.view)
+        TasksVC.view.frame = self.Window.contentView!.bounds
     }
+    
     
     // check if app runs from dmg
     func check_for_dmg() {

@@ -16,5 +16,4 @@ printf '%s\n' "$my_password" | sudo -Sv > /dev/null 2>&1
 
 # kill all corectld processes
 sudo pkill -f corectld
-sudo pkill -f corectld.store
-sudo pkill -f corectld.nameserver
+

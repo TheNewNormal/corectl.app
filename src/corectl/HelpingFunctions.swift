@@ -17,6 +17,10 @@ func check_sudo_password() {
     if (status == "no"){
         // run the script
         runTerminal(NSBundle.mainBundle().resourcePath! + "/set_sudo_password.command")
+        
+        // put loop to check for password
+        //while
+        
     }
 }
 // check sudo password via swift
@@ -49,7 +53,7 @@ func check_that_corectl_blobs_are_in_place() {
         print("corectl not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
-    //
+    
     let filePath2 = "/usr/local/sbin/corectld"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath2))
     {
@@ -60,7 +64,7 @@ func check_that_corectl_blobs_are_in_place() {
         print("corectld not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
-    //
+    
     let filePath3 = "/usr/local/sbin/corectld.runner"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath3))
     {
@@ -71,28 +75,7 @@ func check_that_corectl_blobs_are_in_place() {
         print("corectld.runner not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
-    //
-    let filePath4 = "/usr/local/sbin/corectld.nameserver"
-    if (NSFileManager.defaultManager().fileExistsAtPath(filePath4))
-    {
-        print("corectld.nameserver available");
-    }
-    else
-    {
-        print("corectld.nameserver not available");
-        runScript("copy_corectl_blobs.command", arguments: bin_folder )
-    }
-    //
-    let filePath5 = "/usr/local/sbin/corectld.store"
-    if (NSFileManager.defaultManager().fileExistsAtPath(filePath5))
-    {
-        print("corectld.store available");
-    }
-    else
-    {
-        print("corectld.store not available");
-        runScript("copy_corectl_blobs.command", arguments: bin_folder )
-    }
+
 }
 
 
