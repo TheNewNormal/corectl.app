@@ -101,6 +101,9 @@ func RestartServer() {
     ServerStop()
     ServerStop()
     
+    // check for sudo password change and start corectld server
+    appDelegate().check_and_set_sudo_password("no")
+    
     menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
     // start corectld server
     ServerStartShell()
@@ -109,4 +112,9 @@ func RestartServer() {
     menuItem.menu?.itemWithTag(4)?.title = "Check for corectld updates"
 }
 
+//
+func appDelegate () -> AppDelegate
+{
+    return NSApplication.sharedApplication().delegate as! AppDelegate
+}
 

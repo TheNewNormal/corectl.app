@@ -20,7 +20,7 @@ rm -f corectl.tar.gz
 chmod +x *
 
 # get password for sudo
-my_password=$(security find-generic-password -wa coreosctl-app)
+my_password=$(security find-generic-password -wa corectl-app)
 # reset sudo
 sudo -k > /dev/null 2>&1
 printf '%s\n' "$my_password" | sudo -Sv > /dev/null 2>&1

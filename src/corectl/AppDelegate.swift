@@ -16,8 +16,15 @@ var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
+    
+    @IBOutlet weak var passwordWindow: NSWindow!
+    
     @IBOutlet weak var statusMenu: NSMenu!
+    
+    @IBOutlet weak var sudoPassword: NSSecureTextField!
+    
 
+    /////////
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         let icon = NSImage(named: "StatusItemIcon")
         
@@ -33,29 +40,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         addToLoginItems()
         
         // check if sudo password for the App is saved in keychain
-        check_sudo_password()
-        
-        // check if corectl blobs are in place
-        check_that_corectl_blobs_are_in_place()
-        
-        // check for corectl blobs latest version on github
-        check_for_corectl_blobs_github("yes")
-    
-        // start corectld server
-        ServerStartShell()
-        
-        // check for latest corectl.app release on github
-        check_for_corectl_app_github("yes")
-        
-        // Timer
-        // check for latest app and corectl blobs on github and update menu items
-        _ = NSTimer.scheduledTimerWithTimeInterval(14400.0, target: self, selector: #selector(AppDelegate.check_for_corectl_app_corectld_github), userInfo: nil, repeats: true)
-        
-        // check for server status
-        _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.server_status), userInfo: nil, repeats: true)
-        
-        // check for active VMs and update menu item
-        _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.active_vms), userInfo: nil, repeats: true)
+        // if successful, then run startMainFunctions()
+        check_and_set_sudo_password("yes")
     }
     
     
@@ -197,6 +183,98 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
     // menu functions //
+    
+    
+    // password functions //
+    //OK button
+    @IBAction func passwordOK(sender: NSButton) {
+        
+            // get data from sudoPassword field
+            let sudo_pass: String = sudoPassword.stringValue
+        
+            // validate sudo password
+            let script = NSBundle.mainBundle().resourcePath! + "/validate_sudo_password.command"
+            let sudo_status = shell(script, arguments: [sudo_pass])
+            NSLog("corectld running status: '%@'",sudo_status)
+            //
+            if (sudo_status == "no") {
+                NSLog("sudo password is incorrect !!!")
+                sudoPassword.stringValue = ""
+            }
+            else {
+                // save sudo password to keychain
+                let script2 = NSBundle.mainBundle().resourcePath! + "/set_sudo_password.command"
+                shell(script2, arguments: [sudo_pass])
+            
+                // Hide PasswordWindow
+                passwordWindow.orderOut(self)
+                NSApplication.sharedApplication().mainWindow?.close()
+            
+                // functions to run on app start
+                startMainFunctions()
+            }
+    }
+    
+    //Cancel button
+    @IBAction func passwordCancel(sender: NSButton) {
+        // Hide PasswordWindow
+        passwordWindow.orderOut(self)
+        
+        // show alert message
+        let mText: String = "\("Corectl App cannot function without 'sudo' password !!!")"
+        let infoText: String = "The App will be closed ..."
+        displayWithMessage(mText, infoText: infoText)
+        
+        // exiting App
+        NSApplication.sharedApplication().terminate(self)
+    }
+    
+    // check/set sudo password
+    func check_and_set_sudo_password(MainFunctions:String?) {
+        let script = NSBundle.mainBundle().resourcePath! + "/check_saved_sudo_password.command"
+        let status = shell(script, arguments: [])
+        //
+        if (status == "no"){
+            // show PasswordWindow
+            passwordWindow.makeKeyAndOrderFront(self)
+            NSApp.activateIgnoringOtherApps(true)
+        }
+        else {
+            if (MainFunctions == "yes") {
+                // functions to run on app start
+                startMainFunctions()
+            }
+        }
+    }
+    // password functions //
+    
+    // functions to run on app start //
+    
+    func startMainFunctions() {
+        // check if corectl blobs are in place
+        check_that_corectl_blobs_are_in_place()
+        
+        // check for corectl blobs latest version on github
+        check_for_corectl_blobs_github("yes")
+        
+        // start corectld server
+        ServerStartShell()
+        
+        // check for latest corectl.app release on github
+        check_for_corectl_app_github("yes")
+        
+        // Timer
+        // check for latest app and corectl blobs on github and update menu items
+        _ = NSTimer.scheduledTimerWithTimeInterval(14400.0, target: self, selector: #selector(AppDelegate.check_for_corectl_app_corectld_github), userInfo: nil, repeats: true)
+        
+        // check for server status
+        _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.server_status), userInfo: nil, repeats: true)
+        
+        // check for active VMs and update menu item
+        _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.active_vms), userInfo: nil, repeats: true)
+    }
+    
+    ////
     
     
     // Other funtions //

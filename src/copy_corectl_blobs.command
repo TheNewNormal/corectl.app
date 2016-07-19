@@ -8,7 +8,7 @@ res_folder=$1
 
 # copy blobs
 # get password for sudo
-my_password=$(security find-generic-password -wa coreosctl-app)
+my_password=$(security find-generic-password -wa corectl-app)
 # reset sudo
 sudo -k > /dev/null 2>&1
 #
