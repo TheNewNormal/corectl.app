@@ -9,30 +9,6 @@
 import Foundation
 import Cocoa
 
-// check sudo password via shell
-func check_sudo_password() {
-    let script = NSBundle.mainBundle().resourcePath! + "/check_sudo_password.command"
-    let status = shell(script, arguments: [])
-    //
-    if (status == "no"){
-        // run the script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/set_sudo_password.command")
-    }
-}
-// check sudo password via swift
-func check_sudo_password2() {
-    let app_keychain_value = Keychain.get("coreosctl-app")
-    
-    if ( app_keychain_value == nil )
-    {
-        print("there is no such keychain value ...")
-        // run the script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/set_sudo_password.command")
-    }
-}
-//
-
-
 // check if corectl blobs exist
 func check_that_corectl_blobs_are_in_place() {
     let resoucesPathFromApp = NSBundle.mainBundle().resourcePath!
@@ -72,7 +48,7 @@ func check_that_corectl_blobs_are_in_place() {
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
     //
-    let filePath4 = "/usr/local/sbin/corectld.nameserver"
+    let filePath4 = "/usr/local/sbin/qcow-tool"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath4))
     {
         print("corectld.nameserver available");
@@ -82,17 +58,7 @@ func check_that_corectl_blobs_are_in_place() {
         print("corectld.nameserver not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
-    //
-    let filePath5 = "/usr/local/sbin/corectld.store"
-    if (NSFileManager.defaultManager().fileExistsAtPath(filePath5))
-    {
-        print("corectld.store available");
-    }
-    else
-    {
-        print("corectld.store not available");
-        runScript("copy_corectl_blobs.command", arguments: bin_folder )
-    }
+
 }
 
 
