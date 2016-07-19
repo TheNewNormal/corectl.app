@@ -27,13 +27,13 @@
 		137597651D2BD5A6000CB88F /* copy_corectl_blobs.command in Resources */ = {isa = PBXBuildFile; fileRef = 137597641D2BD5A5000CB88F /* copy_corectl_blobs.command */; };
 		137597671D2BE71C000CB88F /* set_sudo_password.command in Resources */ = {isa = PBXBuildFile; fileRef = 137597661D2BE71C000CB88F /* set_sudo_password.command */; };
 		1375976B1D2BF306000CB88F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1375976A1D2BF306000CB88F /* Security.framework */; };
-		1375976D1D2BF361000CB88F /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1375976C1D2BF361000CB88F /* Keychain.swift */; };
 		1375976F1D2C05AA000CB88F /* start_corectld.command in Resources */ = {isa = PBXBuildFile; fileRef = 1375976E1D2C05AA000CB88F /* start_corectld.command */; };
+		139BA2211D3E9492006282FF /* validate_sudo_password.command in Resources */ = {isa = PBXBuildFile; fileRef = 139BA2201D3E9492006282FF /* validate_sudo_password.command */; };
 		13BC96B41D2CF42C006D27B3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC96B31D2CF42C006D27B3 /* Notifications.swift */; };
 		13BC96B61D2CF4DC006D27B3 /* RunShellApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC96B51D2CF4DC006D27B3 /* RunShellApps.swift */; };
 		13BC96BA1D2CF701006D27B3 /* HelpingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC96B91D2CF701006D27B3 /* HelpingFunctions.swift */; };
 		13BC96BC1D2CF931006D27B3 /* ServerControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC96BB1D2CF931006D27B3 /* ServerControl.swift */; };
-		13BC96BE1D2D0351006D27B3 /* check_sudo_password.command in Resources */ = {isa = PBXBuildFile; fileRef = 13BC96BD1D2D0351006D27B3 /* check_sudo_password.command */; };
+		13BC96BE1D2D0351006D27B3 /* check_saved_sudo_password.command in Resources */ = {isa = PBXBuildFile; fileRef = 13BC96BD1D2D0351006D27B3 /* check_saved_sudo_password.command */; };
 		13CAFC2A1D2272B000E57ED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CAFC291D2272B000E57ED4 /* AppDelegate.swift */; };
 		13CAFC2C1D2272B000E57ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */; };
 		13CAFC2F1D2272B000E57ED4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2D1D2272B000E57ED4 /* MainMenu.xib */; };
@@ -60,13 +60,13 @@
 		137597641D2BD5A5000CB88F /* copy_corectl_blobs.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_corectl_blobs.command; sourceTree = "<group>"; };
 		137597661D2BE71C000CB88F /* set_sudo_password.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = set_sudo_password.command; sourceTree = "<group>"; };
 		1375976A1D2BF306000CB88F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1375976C1D2BF361000CB88F /* Keychain.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		1375976E1D2C05AA000CB88F /* start_corectld.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = start_corectld.command; sourceTree = "<group>"; };
+		139BA2201D3E9492006282FF /* validate_sudo_password.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = validate_sudo_password.command; sourceTree = "<group>"; };
 		13BC96B31D2CF42C006D27B3 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		13BC96B51D2CF4DC006D27B3 /* RunShellApps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunShellApps.swift; sourceTree = "<group>"; };
 		13BC96B91D2CF701006D27B3 /* HelpingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpingFunctions.swift; sourceTree = "<group>"; };
 		13BC96BB1D2CF931006D27B3 /* ServerControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerControl.swift; sourceTree = "<group>"; };
-		13BC96BD1D2D0351006D27B3 /* check_sudo_password.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_sudo_password.command; sourceTree = "<group>"; };
+		13BC96BD1D2D0351006D27B3 /* check_saved_sudo_password.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_saved_sudo_password.command; sourceTree = "<group>"; };
 		13CAFC261D2272B000E57ED4 /* corectl.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = corectl.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13CAFC291D2272B000E57ED4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -105,7 +105,8 @@
 				134DD75D1D300CE400E60CDE /* check_corectld_version.command */,
 				134F3CEB1D2C2270002B9668 /* check_blobs_version.command */,
 				137597621D2BC9CF000CB88F /* update_corectl_blobs.command */,
-				13BC96BD1D2D0351006D27B3 /* check_sudo_password.command */,
+				13BC96BD1D2D0351006D27B3 /* check_saved_sudo_password.command */,
+				139BA2201D3E9492006282FF /* validate_sudo_password.command */,
 				137597661D2BE71C000CB88F /* set_sudo_password.command */,
 			);
 			name = scripts;
@@ -151,7 +152,6 @@
 				13BC96B91D2CF701006D27B3 /* HelpingFunctions.swift */,
 				13BC96B51D2CF4DC006D27B3 /* RunShellApps.swift */,
 				13BC96B31D2CF42C006D27B3 /* Notifications.swift */,
-				1375976C1D2BF361000CB88F /* Keychain.swift */,
 				13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */,
 				13CAFC2D1D2272B000E57ED4 /* MainMenu.xib */,
 				13CAFC301D2272B000E57ED4 /* Info.plist */,
@@ -232,9 +232,10 @@
 				136605381D23CCB200D497A0 /* fetch_latest_iso_alpha.command in Resources */,
 				137597671D2BE71C000CB88F /* set_sudo_password.command in Resources */,
 				134DD75C1D2FEBF100E60CDE /* check_corectld_status.command in Resources */,
-				13BC96BE1D2D0351006D27B3 /* check_sudo_password.command in Resources */,
+				13BC96BE1D2D0351006D27B3 /* check_saved_sudo_password.command in Resources */,
 				134F3CEC1D2C2270002B9668 /* check_blobs_version.command in Resources */,
 				134476021D2E5F220035B3B9 /* check_active_vms.command in Resources */,
+				139BA2211D3E9492006282FF /* validate_sudo_password.command in Resources */,
 				136605431D23E85800D497A0 /* fetch_latest_iso_beta.command in Resources */,
 				1375976F1D2C05AA000CB88F /* start_corectld.command in Resources */,
 			);
@@ -252,7 +253,6 @@
 				13BC96B41D2CF42C006D27B3 /* Notifications.swift in Sources */,
 				13CAFC2A1D2272B000E57ED4 /* AppDelegate.swift in Sources */,
 				13BC96B61D2CF4DC006D27B3 /* RunShellApps.swift in Sources */,
-				1375976D1D2BF361000CB88F /* Keychain.swift in Sources */,
 				13BC96BA1D2CF701006D27B3 /* HelpingFunctions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
