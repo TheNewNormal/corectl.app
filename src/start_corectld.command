@@ -13,5 +13,5 @@ sudo -k > /dev/null 2>&1
 printf '%s\n' "$my_password" | sudo -Sv > /dev/null 2>&1
 
 # start corectld
-sudo nohup /usr/local/sbin/corectld start --user $(whoami)
+sudo nohup /usr/local/sbin/corectld start --user $(whoami) --recursive-nameservers "$( printLocalDns )"
 
