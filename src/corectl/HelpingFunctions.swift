@@ -21,7 +21,7 @@ func check_sudo_password() {
 }
 // check sudo password via swift
 func check_sudo_password2() {
-    let app_keychain_value = Keychain.get("coreosctl-app")
+    let app_keychain_value = Keychain.get("coreosctl-app2")
     
     if ( app_keychain_value == nil )
     {
@@ -72,7 +72,7 @@ func check_that_corectl_blobs_are_in_place() {
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
     //
-    let filePath4 = "/usr/local/sbin/corectld.nameserver"
+    let filePath4 = "/usr/local/sbin/qcow-tool"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath4))
     {
         print("corectld.nameserver available");
@@ -82,17 +82,7 @@ func check_that_corectl_blobs_are_in_place() {
         print("corectld.nameserver not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
-    //
-    let filePath5 = "/usr/local/sbin/corectld.store"
-    if (NSFileManager.defaultManager().fileExistsAtPath(filePath5))
-    {
-        print("corectld.store available");
-    }
-    else
-    {
-        print("corectld.store not available");
-        runScript("copy_corectl_blobs.command", arguments: bin_folder )
-    }
+
 }
 
 
