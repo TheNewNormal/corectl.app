@@ -8,6 +8,11 @@ function pause(){
 }
 
 function printLocalDns(){
+    if nc -z localhost 53 1>/dev/null 2>&1
+    then
+        # port 53 is already bound, do not proceed:
+        return
+    fi
     local ALL_DNS='8.8.8.8:53,8.8.4.4:53'
     if [[ -r '/etc/resolv.conf' ]]
     then
