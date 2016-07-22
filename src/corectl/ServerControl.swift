@@ -78,6 +78,11 @@ func ServerStop() {
     task.launchPath = "/usr/local/sbin/corectld"
     task.arguments = ["stop"]
     task.launch()
+    task.waitUntilExit()
+    
+    // run script and wait till corectld.runner stops
+    runScript("wait_for_halt_corectld.command", arguments: "")
+    
     
     menuItem.menu?.itemWithTag(1)?.title = "Server is off"
     menuItem.menu?.itemWithTag(1)?.state = NSOffState
@@ -98,7 +103,6 @@ func RestartServer() {
     menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
     
     // stop corectld server
-    ServerStop()
     ServerStop()
     
     // check for sudo password change and start corectld server

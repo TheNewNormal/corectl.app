@@ -37,6 +37,7 @@
 		13CAFC2A1D2272B000E57ED4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13CAFC291D2272B000E57ED4 /* AppDelegate.swift */; };
 		13CAFC2C1D2272B000E57ED4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */; };
 		13CAFC2F1D2272B000E57ED4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 13CAFC2D1D2272B000E57ED4 /* MainMenu.xib */; };
+		13CFBED91D42990300CD2150 /* wait_for_halt_corectld.command in Resources */ = {isa = PBXBuildFile; fileRef = 13CFBED81D42990300CD2150 /* wait_for_halt_corectld.command */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +73,7 @@
 		13CAFC2B1D2272B000E57ED4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		13CAFC2E1D2272B000E57ED4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		13CAFC301D2272B000E57ED4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		13CFBED81D42990300CD2150 /* wait_for_halt_corectld.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = wait_for_halt_corectld.command; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 				1375976E1D2C05AA000CB88F /* start_corectld.command */,
 				134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */,
 				1318E2031D302A3400EC75E9 /* halt_corectld.command */,
+				13CFBED81D42990300CD2150 /* wait_for_halt_corectld.command */,
 				136605361D23CCB200D497A0 /* fetch_latest_iso_alpha.command */,
 				136605411D23E85800D497A0 /* fetch_latest_iso_beta.command */,
 				136605421D23E85800D497A0 /* fetch_latest_iso_stable.command */,
@@ -232,6 +235,7 @@
 				136605381D23CCB200D497A0 /* fetch_latest_iso_alpha.command in Resources */,
 				137597671D2BE71C000CB88F /* set_sudo_password.command in Resources */,
 				134DD75C1D2FEBF100E60CDE /* check_corectld_status.command in Resources */,
+				13CFBED91D42990300CD2150 /* wait_for_halt_corectld.command in Resources */,
 				13BC96BE1D2D0351006D27B3 /* check_saved_sudo_password.command in Resources */,
 				134F3CEC1D2C2270002B9668 /* check_blobs_version.command in Resources */,
 				134476021D2E5F220035B3B9 /* check_active_vms.command in Resources */,
