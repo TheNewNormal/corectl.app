@@ -13,6 +13,8 @@
 		134DD75C1D2FEBF100E60CDE /* check_corectld_status.command in Resources */ = {isa = PBXBuildFile; fileRef = 134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */; };
 		134DD75E1D300CE400E60CDE /* check_corectld_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 134DD75D1D300CE400E60CDE /* check_corectld_version.command */; };
 		134F3CEC1D2C2270002B9668 /* check_blobs_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 134F3CEB1D2C2270002B9668 /* check_blobs_version.command */; };
+		13599DA91D4776E8004F8F5A /* start_docker_registry.command in Resources */ = {isa = PBXBuildFile; fileRef = 13599DA81D4776E8004F8F5A /* start_docker_registry.command */; };
+		13599DAD1D477C6D004F8F5A /* registry in Resources */ = {isa = PBXBuildFile; fileRef = 13599DAC1D477C6D004F8F5A /* registry */; };
 		136605381D23CCB200D497A0 /* fetch_latest_iso_alpha.command in Resources */ = {isa = PBXBuildFile; fileRef = 136605361D23CCB200D497A0 /* fetch_latest_iso_alpha.command */; };
 		136605391D23CCB200D497A0 /* functions.sh in Resources */ = {isa = PBXBuildFile; fileRef = 136605371D23CCB200D497A0 /* functions.sh */; };
 		1366053B1D23D6AD00D497A0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1366053A1D23D6AD00D497A0 /* Foundation.framework */; };
@@ -47,6 +49,8 @@
 		134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectld_status.command; sourceTree = "<group>"; };
 		134DD75D1D300CE400E60CDE /* check_corectld_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectld_version.command; sourceTree = "<group>"; };
 		134F3CEB1D2C2270002B9668 /* check_blobs_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_blobs_version.command; sourceTree = "<group>"; };
+		13599DA81D4776E8004F8F5A /* start_docker_registry.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = start_docker_registry.command; sourceTree = "<group>"; };
+		13599DAC1D477C6D004F8F5A /* registry */ = {isa = PBXFileReference; lastKnownFileType = folder; path = registry; sourceTree = "<group>"; };
 		136605361D23CCB200D497A0 /* fetch_latest_iso_alpha.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = fetch_latest_iso_alpha.command; sourceTree = "<group>"; };
 		136605371D23CCB200D497A0 /* functions.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = functions.sh; sourceTree = "<group>"; };
 		1366053A1D23D6AD00D497A0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -98,6 +102,7 @@
 				137597641D2BD5A5000CB88F /* copy_corectl_blobs.command */,
 				134476011D2E5F220035B3B9 /* check_active_vms.command */,
 				1375976E1D2C05AA000CB88F /* start_corectld.command */,
+				13599DA81D4776E8004F8F5A /* start_docker_registry.command */,
 				134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */,
 				1318E2031D302A3400EC75E9 /* halt_corectld.command */,
 				13CFBED81D42990300CD2150 /* wait_for_halt_corectld.command */,
@@ -131,6 +136,7 @@
 			children = (
 				13CAFC281D2272B000E57ED4 /* corectl */,
 				1375975A1D2BA78E000CB88F /* bin */,
+				13599DAC1D477C6D004F8F5A /* registry */,
 				1375975E1D2BA816000CB88F /* get_go_binaries */,
 				136605351D23CC9A00D497A0 /* scripts */,
 				136605401D23D6F600D497A0 /* Frameworks */,
@@ -241,6 +247,8 @@
 				134476021D2E5F220035B3B9 /* check_active_vms.command in Resources */,
 				139BA2211D3E9492006282FF /* validate_sudo_password.command in Resources */,
 				136605431D23E85800D497A0 /* fetch_latest_iso_beta.command in Resources */,
+				13599DAD1D477C6D004F8F5A /* registry in Resources */,
+				13599DA91D4776E8004F8F5A /* start_docker_registry.command in Resources */,
 				1375976F1D2C05AA000CB88F /* start_corectld.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,7 +369,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = corectl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -375,7 +382,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "Developer ID Application";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = corectl/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

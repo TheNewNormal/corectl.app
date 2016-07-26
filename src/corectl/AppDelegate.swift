@@ -84,7 +84,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     ////
     
-    // check and download updates for corectld and App
+    // check and download updates for corectl and App
     // check fo updates for App
     @IBAction func checkForAppUpdates(sender: NSMenuItem) {
         // send a notification on to the screen
@@ -97,12 +97,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         check_for_corectl_app_github("yes", runViaUpdateMenu: "yes")
     }
     
-    // check updates for corectld server
+    // check updates for corectl server
     @IBAction func checkForCorectldUpdates(sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
-        notification.informativeText = "Updates for Corectld server will be checked"
+        notification.informativeText = "Updates for Corectl tools will be checked"
         NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
         
         // run check function
@@ -259,6 +259,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // start corectld server
         ServerStartShell()
+        
+        // start local docker registry
+        startDockerRegistry()
         
         // check for latest corectl.app release on github
         check_for_corectl_app_github("yes")

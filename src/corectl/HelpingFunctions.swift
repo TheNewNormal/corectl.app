@@ -61,6 +61,12 @@ func check_that_corectl_blobs_are_in_place() {
 
 }
 
+// start local docker registry
+func startDockerRegistry() {
+    let resoucesPathFromApp = NSBundle.mainBundle().resourcePath!
+    runScript("start_docker_registry.command", arguments: resoucesPathFromApp )
+}
+
 
 // Adds the app to the system's list of login items.
 // NOTE: This is a relatively janky way of doing this. Using a

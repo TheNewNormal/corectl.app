@@ -1,12 +1,13 @@
 Corectl App for macOS 
 ========================
 
-**Corectl App** is a macOS Status bar App which works like a wrapper around the [corectl](https://github.com/TheNewNormal/corectl) command line tool `corectld` to control the server runtime process. 
+**Corectl App** is a macOS Status bar App which works like a wrapper around the [corectl](https://github.com/TheNewNormal/corectl) command line tool `corectld` to control the server runtime process.
+
+**New:** It has built in [Docker Registry](https://github.com/docker/distribution) on `192.168.64.1:5000`
 
 **Note:** `Corectl App` only controls `corectld` server daemon, and is very, very, light on macOS system resources, when running and when idle. Also if there are no VMs running `corectld` server daemon is not using much resources too.
 
-
-[corectl](https://github.com/TheNewNormal/corectl) allows to run CoreOS VMs on macOS using [xhyve](https://github.com/mist64/xhyve) which uses native macOS Hypervisor framework. Using native macOS Hypervisor framework eliminates of needs to use Virtual Box and other similar software to run your CoreOS VMs.
+[corectl](https://github.com/TheNewNormal/corectl) allows to run CoreOS VMs on macOS using [xhyve](https://github.com/mist64/xhyve) which uses native macOS Hypervisor framework. Using native macOS Hypervisor framework eliminates any needs to use Virtual Box and other similar software to run your CoreOS VMs.
 
 ![Corectl_APP](corectl_app.png "Corectl_APP")
 
@@ -40,7 +41,9 @@ Under menu you will be able:
 - Restart the server
 - Check for new App version
 - Check and download `corectl` new version
-- Fetch latest CoreOS ISO images, which will be stored under `~/.coreos` folder and can be shared between all VMs.
+- Fetch latest CoreOS ISO images, which will be stored under `~/.coreos/images` folder and can be shared between all VMs.
+- Local Docker registry runs on `192.168.64.1:5000` and images are stored under `~/.coreos/registry/` and it can be shared between all VMs running with `corectl` tool.
+
 
 ### have fun!
 
