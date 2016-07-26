@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
     </dependencies>
     <objects>
@@ -697,7 +696,7 @@
                         <action selector="checkForAppUpdates:" target="Voe-Tx-rLC" id="YjE-3w-5cB"/>
                     </connections>
                 </menuItem>
-                <menuItem title="Check for corectld updates" tag="4" id="J0q-Qe-LjV">
+                <menuItem title="Check for 'corectl' updates" tag="4" id="J0q-Qe-LjV">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>
                         <action selector="checkForCorectldUpdates:" target="Voe-Tx-rLC" id="e4B-r2-SOH"/>

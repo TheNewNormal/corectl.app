@@ -90,7 +90,7 @@ func check_for_corectl_blobs_github(showPopUp:String?=nil, runViaUpdateMenu:Stri
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(4)?.title = "Download corectld updates..."
+            menuItem.menu?.itemWithTag(4)?.title = "Download corectl updates..."
         }
     }
     else {
@@ -101,7 +101,7 @@ func check_for_corectl_blobs_github(showPopUp:String?=nil, runViaUpdateMenu:Stri
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(4)?.title = "Check for corectld updates"
+            menuItem.menu?.itemWithTag(4)?.title = "Check for corectl updates"
         }
     }
 }
@@ -130,12 +130,12 @@ func download_corectl_blobs_github(runViaUpdateMenu:String?=nil) {
 //            }
             // restore menu item
 //            let menuItem : NSStatusItem = statusItem
-//            menuItem.menu?.itemWithTag(4)?.title = "Check for corectld updates"
+//            menuItem.menu?.itemWithTag(4)?.title = "Check for corectl updates"
 //        }
     }
     else {
         let menuItem : NSStatusItem = statusItem
-        menuItem.menu?.itemWithTag(4)?.title = "Download corectld updates..."
+        menuItem.menu?.itemWithTag(4)?.title = "Download corectl updates..."
     }
 }
 

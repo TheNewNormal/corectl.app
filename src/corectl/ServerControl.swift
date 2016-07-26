@@ -97,7 +97,7 @@ func RestartServer() {
     // send a notification on to the screen
     print("Restarting corectld server")
     let notification: NSUserNotification = NSUserNotification()
-    notification.title = "Restarting Corectld server"
+    notification.title = "Restarting corectld server"
     NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
     
     menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
@@ -113,7 +113,7 @@ func RestartServer() {
     ServerStartShell()
     //
     menuItem.menu?.itemWithTag(3)?.title = "Check for App updates"
-    menuItem.menu?.itemWithTag(4)?.title = "Check for corectld updates"
+    menuItem.menu?.itemWithTag(4)?.title = "Check for corectl updates"
 }
 
 //

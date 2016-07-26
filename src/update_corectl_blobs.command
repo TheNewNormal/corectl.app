@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 
 #  update macOS clients
 #
@@ -29,7 +29,7 @@ printf '%s\n' "$my_password" | sudo -Sv > /dev/null 2>&1
 echo "Copying files ..."
 sudo cp -f * /usr/local/sbin/
 
-echo "Remove old version unneeded blobs ..."
+# Remove old version unneeded blobs ...
 sudo rm -f /usr/local/sbin/corectld.nameserver > /dev/null 2>&1
 sudo rm -f /usr/local/sbin/corectld.store > /dev/null 2>&1
 
