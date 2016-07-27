@@ -3,7 +3,7 @@ Corectl App for macOS
 
 **Corectl App** is a macOS Status bar App which works like a wrapper around the [corectl](https://github.com/TheNewNormal/corectl) command line tool `corectld` to control the server runtime process.
 
-**New:** It has built in [Docker Registry](https://github.com/docker/distribution) on `192.168.64.1:5000`, which can be shared between VMs run by `corectl`
+**New:** It has built in [Docker Registry](https://github.com/docker/distribution) (go binary run on macOS ) on `192.168.64.1:5000`, which can be accessed and shared between all VMs run by `corectl`
 
 **Note:** `Corectl App` only controls `corectld` server daemon, and is very, very, light on macOS system resources, when running and when idle. Also if there are no VMs running `corectld` server daemon is not using much resources too.
 
