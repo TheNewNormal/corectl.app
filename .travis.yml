@@ -2,3 +2,5 @@ language: objective-c
 osx_image: xcode7.3
 xcode_project: src/corectl.xcodeproj
 xcode_scheme: corectl
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
