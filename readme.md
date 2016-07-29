@@ -42,12 +42,12 @@ Under menu you will be able:
 - Check for new App version
 - Check and download `corectl` new version
 - Fetch latest CoreOS ISO images, which will be stored under `~/.coreos/images` folder and can be shared between all VMs.
-- Local Docker registry runs on `192.168.64.1:5000` and images are stored under `~/.coreos/registry/` and it can be shared between all VMs running with `corectl` tool.
+- Local Docker registry runs on `192.168.64.1:5000` and images are stored under `~/.coreos/registry/` and it can be shared between all VMs.
 
 
 ### have fun!
 
-## Projects using **Corectl.App/corectl**
+## Projects using **Corectl.App**
 
 - [TheNewNormal](http://github.com/TheNewNormal) org projects:
 
