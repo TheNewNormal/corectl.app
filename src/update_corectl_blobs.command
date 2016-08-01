@@ -19,19 +19,10 @@ tar xzvf corectl.tar.gz > /dev/null 2>&1
 rm -f corectl.tar.gz
 chmod +x *
 
-# get password for sudo
-my_password=$(security find-generic-password -wa corectl-app)
-# reset sudo
-sudo -k > /dev/null 2>&1
-printf '%s\n' "$my_password" | sudo -Sv > /dev/null 2>&1
-
 # copy blobs
 echo "Copying files ..."
-sudo cp -f * /usr/local/sbin/
+sudo cp -f * ~/bin/
 
-# Remove old version unneeded blobs ...
-sudo rm -f /usr/local/sbin/corectld.nameserver > /dev/null 2>&1
-sudo rm -f /usr/local/sbin/corectld.store > /dev/null 2>&1
 
 #
 cd ~/
@@ -42,14 +33,14 @@ echo "Download has finished !!!"
 echo " "
 
 # check if corectld is running
-CHECK_SERVER_STATUS=$(/usr/local/sbin/corectld status 2>&1 | grep "Uptime:")
+CHECK_SERVER_STATUS=$(~/bin/corectld status 2>&1 | grep "Uptime:")
 
 if [[ "$CHECK_SERVER_STATUS" == "" ]]; then
     # corectld is not running
     echo "Corectld is updated to latest version ..."
 else
     # check for active VMs
-    vms=$(/usr/local/sbin/corectld status | grep "Active VMs:" | awk '{print $3}')
+    vms=$(~/bin/corectld status | grep "Active VMs:" | awk '{print $3}')
     if [[ "$vms" -ne "0" ]]; then
     # active VMs
         echo "You need to restart 'corectld' server via menu, but Halt all your VMs first, as you have $vms running !!! "

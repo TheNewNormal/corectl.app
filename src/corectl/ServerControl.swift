@@ -20,8 +20,8 @@ func ServerStart() {
     
     // start corectld server
     let task = NSTask()
-    task.launchPath = "/usr/local/sbin/corectld"
-    task.arguments = ["start"]
+    task.launchPath = "~/bin/corectld"
+    task.arguments = ["start -u $(whoami)"]
     task.launch()
     
     menuItem.menu?.itemWithTag(1)?.title = "Server is running"
@@ -75,14 +75,13 @@ func ServerStop() {
     
     // stop corectld server
     let task = NSTask()
-    task.launchPath = "/usr/local/sbin/corectld"
+    task.launchPath = "~/bin/corectld"
     task.arguments = ["stop"]
     task.launch()
     task.waitUntilExit()
     
     // run script and wait till corectld.runner stops
-    runScript("wait_for_halt_corectld.command", arguments: "")
-    
+    // runScript("wait_for_halt_corectld.command", arguments: "")
     
     menuItem.menu?.itemWithTag(1)?.title = "Server is off"
     menuItem.menu?.itemWithTag(1)?.state = NSOffState
@@ -104,9 +103,6 @@ func RestartServer() {
     
     // stop corectld server
     ServerStop()
-    
-    // check for sudo password change and start corectld server
-    appDelegate().check_and_set_sudo_password("no")
     
     menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
     // start corectld server

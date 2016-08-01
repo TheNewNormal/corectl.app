@@ -15,7 +15,7 @@ func check_that_corectl_blobs_are_in_place() {
     let bin_folder = resoucesPathFromApp + "/bin"
     
     //
-    let filePath1 = "/usr/local/sbin/corectl"
+    let filePath1 = "~/bin/corectl"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath1))
     {
         print("corectl available");
@@ -26,7 +26,7 @@ func check_that_corectl_blobs_are_in_place() {
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
     //
-    let filePath2 = "/usr/local/sbin/corectld"
+    let filePath2 = "~/bin/corectld"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath2))
     {
         print("corectld available");
@@ -37,7 +37,7 @@ func check_that_corectl_blobs_are_in_place() {
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
     //
-    let filePath3 = "/usr/local/sbin/corectld.runner"
+    let filePath3 = "~/bin/corectld.runner"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath3))
     {
         print("corectld.runner available");
@@ -48,14 +48,14 @@ func check_that_corectl_blobs_are_in_place() {
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
     //
-    let filePath4 = "/usr/local/sbin/qcow-tool"
+    let filePath4 = "~/bin/qcow-tool"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath4))
     {
-        print("corectld.nameserver available");
+        print("qcow-tool available");
     }
     else
     {
-        print("corectld.nameserver not available");
+        print("qcow-tool not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
 
