@@ -12,7 +12,7 @@ echo " "
 echo "Fetching lastest CoreOS $CHANNEL channel ISO ..."
 echo " "
 #
-/usr/local/sbin/corectl pull --channel="$CHANNEL" 2>&1 | tee ~/.coreos/tmp/check_channel
+~/bin/corectl pull --channel="$CHANNEL" 2>&1 | tee ~/.coreos/tmp/check_channel
 CHECK_CHANNEL=$(cat ~/.coreos/tmp/check_channel | grep "downloading" | awk '{print $2}')
 #
 if [[ "$CHECK_CHANNEL" == "downloading" ]]; then
@@ -25,3 +25,5 @@ fi
 
 echo " "
 pause 'Press [Enter] key to continue...'
+
+exit 0

@@ -11,11 +11,12 @@ import Cocoa
 
 // check if corectl blobs exist
 func check_that_corectl_blobs_are_in_place() {
+    // Get App's resource folder
     let resoucesPathFromApp = NSBundle.mainBundle().resourcePath!
     let bin_folder = resoucesPathFromApp + "/bin"
-    
-    //
-    let filePath1 = "/usr/local/sbin/corectl"
+
+    // check for corectl files in user's home folder
+    let filePath1 = NSHomeDirectory() + "/bin/corectl"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath1))
     {
         print("corectl available");
@@ -26,7 +27,7 @@ func check_that_corectl_blobs_are_in_place() {
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
     //
-    let filePath2 = "/usr/local/sbin/corectld"
+    let filePath2 = NSHomeDirectory() + "/bin/corectld"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath2))
     {
         print("corectld available");
@@ -37,7 +38,7 @@ func check_that_corectl_blobs_are_in_place() {
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
     //
-    let filePath3 = "/usr/local/sbin/corectld.runner"
+    let filePath3 = NSHomeDirectory() + "/bin/corectld.runner"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath3))
     {
         print("corectld.runner available");
@@ -48,18 +49,18 @@ func check_that_corectl_blobs_are_in_place() {
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
     //
-    let filePath4 = "/usr/local/sbin/qcow-tool"
+    let filePath4 = NSHomeDirectory() + "/bin/qcow-tool"
     if (NSFileManager.defaultManager().fileExistsAtPath(filePath4))
     {
-        print("corectld.nameserver available");
+        print("qcow-tool available");
     }
     else
     {
-        print("corectld.nameserver not available");
+        print("qcow-tool not available");
         runScript("copy_corectl_blobs.command", arguments: bin_folder )
     }
-
 }
+
 
 // start local docker registry
 func startDockerRegistry() {
@@ -80,5 +81,13 @@ func addToLoginItems() {
             "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/corectl.app\", hidden:false, name:\"Corectl\"}"
         ]
     )
+}
+
+// send notification to screen
+func notifyUserWithTitle(title: String, text: String) {
+    let notification: NSUserNotification = NSUserNotification()
+    notification.title = title
+    notification.informativeText = text
+    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
 }
 

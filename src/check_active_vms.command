@@ -2,7 +2,7 @@
 
 # check for active VMs
 
-vms=$(/usr/local/sbin/corectld status | grep "Active VMs:" | awk '{print $3}')
+vms=$(~/bin/corectld status | grep "Active VMs:" | awk '{print $3}')
 
 if [[ "$vms" -ne "0" ]]; then
     # active VMs

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MATCH=$(/usr/local/sbin/corectld version | grep "suggested")
+MATCH=$(~/bin/corectld version | grep "suggested")
 
 if [[ "${MATCH}" == *"suggested"* ]]; then
     # there is an update
