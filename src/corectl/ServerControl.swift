@@ -21,8 +21,9 @@ func ServerStart() {
     // start corectld server
     let task = NSTask()
     task.launchPath = "~/bin/corectld"
-    task.arguments = ["start -u $(whoami)"]
+    task.arguments = ["start ", "-u ", "$(whoami)"]
     task.launch()
+    task.waitUntilExit()
     
     menuItem.menu?.itemWithTag(1)?.title = "Server is running"
     menuItem.menu?.itemWithTag(1)?.state = NSOnState
@@ -40,6 +41,8 @@ func ServerStartShell() {
     let launchPath = NSBundle.mainBundle().resourcePath! + "/start_corectld.command"
     task.launchPath = launchPath
     task.launch()
+    task.waitUntilExit()
+    
     //
     let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
     dispatch_after(time, dispatch_get_main_queue()) {

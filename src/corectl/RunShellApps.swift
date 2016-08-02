@@ -52,6 +52,7 @@ func shell(launchPath: String, arguments: [String]) -> String
     let pipe = NSPipe()
     task.standardOutput = pipe
     task.launch()
+    task.waitUntilExit()
     
     let data = pipe.fileHandleForReading.readDataToEndOfFile()
     let output = String(data: data, encoding: NSUTF8StringEncoding)!
