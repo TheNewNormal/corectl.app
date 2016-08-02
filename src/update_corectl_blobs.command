@@ -53,3 +53,6 @@ fi
 echo " "
 pause 'Press [Enter] key to continue...'
 
+exit 0
+
+

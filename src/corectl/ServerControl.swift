@@ -16,17 +16,47 @@ func ServerStart() {
     // send stop to corectld just in case it was left running
     ServerStop()
     
+    // send an alert about the user password
+    let mText: String = "Corectl for macOS"
+    let infoText: String = "You will be asked to type your user password, needed to start 'corectld' server !!!"
+    displayWithMessage(mText, infoText: infoText)
+    
+    //
     let menuItem : NSStatusItem = statusItem
     
     // start corectld server
     let task = NSTask()
     task.launchPath = "~/bin/corectld"
-    task.arguments = ["start ", "-u ", "$(whoami)"]
+    task.arguments = ["start"]
     task.launch()
     task.waitUntilExit()
     
-    menuItem.menu?.itemWithTag(1)?.title = "Server is running"
-    menuItem.menu?.itemWithTag(1)?.state = NSOnState
+    //
+    let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
+    dispatch_after(time, dispatch_get_main_queue()) {
+        //
+        let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
+        let status = shell(script, arguments: [])
+        NSLog("corectld running status: '%@'",status)
+        //
+        if (status == "no"){
+            let menuItem : NSStatusItem = statusItem
+            menuItem.menu?.itemWithTag(1)?.title = "Server is Off"
+            // display the error message
+            let mText: String = "Corectl for macOS"
+            let infoText: String = "Cannot start the \"corectld server\" !!!"
+            displayWithMessage(mText, infoText: infoText)
+        }
+        else {
+            menuItem.menu?.itemWithTag(1)?.title = "Server is running"
+            menuItem.menu?.itemWithTag(1)?.state = NSOnState
+            //
+            let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_version.command"
+            let version = shell(script, arguments: [])
+            NSLog("corectld version: '%@'",version)
+            menuItem.menu?.itemWithTag(11)?.title = " Server version: " + version
+        }
+    }
 }
 
 
@@ -34,6 +64,12 @@ func ServerStartShell() {
     // send stop to corectld just in case it was left running
     ServerStop()
     
+    // send an alert about the user password
+    let mText: String = "Corectl for macOS"
+    let infoText: String = "You will be asked to type your user password, needed to start 'corectld' server !!!"
+    displayWithMessage(mText, infoText: infoText)
+    
+    //
     let menuItem : NSStatusItem = statusItem
     
     // start corectld server
@@ -84,7 +120,7 @@ func ServerStop() {
     task.waitUntilExit()
     
     // run script and wait till corectld.runner stops
-    // runScript("wait_for_halt_corectld.command", arguments: "")
+    // runScript("wait_for_corectld_runner_stop.command", arguments: "")
     
     menuItem.menu?.itemWithTag(1)?.title = "Server is off"
     menuItem.menu?.itemWithTag(1)?.state = NSOffState

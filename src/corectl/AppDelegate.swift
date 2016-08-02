@@ -174,8 +174,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // stop corectld server
             ServerStop()
         
-            // clean up - kill all corectld processes
-            runScript("halt_corectld.command", arguments: "" )
+            // stop docker registry
+            runScript("stop_docker_registry.command", arguments: "" )
             
             // exit App
             exit(0)
