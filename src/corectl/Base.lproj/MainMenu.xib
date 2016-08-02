@@ -13,9 +13,7 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="corectl" customModuleProvider="target">
             <connections>
-                <outlet property="passwordWindow" destination="eOW-3f-KS0" id="X6G-vL-XdI"/>
                 <outlet property="statusMenu" destination="czS-Km-Bdb" id="8Tz-9A-4wy"/>
-                <outlet property="sudoPassword" destination="0Op-4I-iKs" id="kaN-2C-Svl"/>
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
@@ -749,68 +747,5 @@
             </items>
             <point key="canvasLocation" x="-1924" y="50.5"/>
         </menu>
-        <window title="Corectl App" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="eOW-3f-KS0">
-            <windowStyleMask key="styleMask" titled="YES"/>
-            <windowPositionMask key="initialPositionMask" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="717" y="702" width="511" height="222"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
-            <view key="contentView" id="oFo-YA-qKA">
-                <rect key="frame" x="0.0" y="0.0" width="511" height="222"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjj-9H-Wu0">
-                        <rect key="frame" x="14" y="180" width="482" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="&quot;sudo&quot; password is not set/does not match your current user password !!!" id="7gX-19-qXE">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Umy-Ub-qk6">
-                        <rect key="frame" x="104" y="29" width="82" height="32"/>
-                        <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="WCB-sm-XKo">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                            <string key="keyEquivalent" base64-UTF8="YES">
-Gw
-</string>
-                        </buttonCell>
-                        <connections>
-                            <action selector="passwordCancel:" target="Voe-Tx-rLC" id="g1K-N9-pHk"/>
-                        </connections>
-                    </button>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TZF-dA-gcn">
-                        <rect key="frame" x="138" y="141" width="221" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please type your user password:" id="xO7-mp-kfr">
-                            <font key="font" metaFont="systemBold"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <secureTextField verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Op-4I-iKs" userLabel="sudo Password">
-                        <rect key="frame" x="174" y="100" width="149" height="22"/>
-                        <secureTextFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" usesSingleLineMode="YES" id="0lV-Rl-ohY">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            <allowedInputSourceLocales>
-                                <string>NSAllRomanInputSourcesLocaleIdentifier</string>
-                            </allowedInputSourceLocales>
-                        </secureTextFieldCell>
-                    </secureTextField>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z3J-6N-SyC">
-                        <rect key="frame" x="353" y="29" width="57" height="32"/>
-                        <buttonCell key="cell" type="push" title="Ok" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="64q-QZ-Vqs">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="passwordOK:" target="Voe-Tx-rLC" id="4Yq-2E-gT1"/>
-                        </connections>
-                    </button>
-                </subviews>
-            </view>
-            <point key="canvasLocation" x="-1455.5" y="93"/>
-        </window>
     </objects>
 </document>

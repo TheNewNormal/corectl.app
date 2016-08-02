@@ -83,3 +83,11 @@ func addToLoginItems() {
     )
 }
 
+// send notification to screen
+func notifyUserWithTitle(title: String, text: String) {
+    let notification: NSUserNotification = NSUserNotification()
+    notification.title = title
+    notification.informativeText = text
+    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+}
+

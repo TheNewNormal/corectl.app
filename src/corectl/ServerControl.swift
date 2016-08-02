@@ -62,7 +62,11 @@ func ServerStart() {
 
 func ServerStartShell() {
     // send stop to corectld just in case it was left running
-    ServerStop()
+    let stop_task = NSTask()
+    stop_task.launchPath = "~/bin/corectld"
+    stop_task.arguments = ["stop"]
+    stop_task.launch()
+    stop_task.waitUntilExit()
     
     // send an alert about the user password
     let mText: String = "Corectl for macOS"
@@ -112,6 +116,9 @@ func ServerStartShell() {
 func ServerStop() {
     let menuItem : NSStatusItem = statusItem
     
+    // show notification on to screen
+    //notifyUserWithTitle("Corectl App", text: "All running VMs will be stopped !!!")
+    
     // stop corectld server
     let task = NSTask()
     task.launchPath = "~/bin/corectld"
@@ -120,8 +127,9 @@ func ServerStop() {
     task.waitUntilExit()
     
     // run script and wait till corectld.runner stops
-    // runScript("wait_for_corectld_runner_stop.command", arguments: "")
+    runScript("wait_for_corectld_runner_stop.command", arguments: "")
     
+    //
     menuItem.menu?.itemWithTag(1)?.title = "Server is off"
     menuItem.menu?.itemWithTag(1)?.state = NSOffState
 }
