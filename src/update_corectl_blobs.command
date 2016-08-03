@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash
 
 #  update macOS clients
 #
@@ -20,9 +20,8 @@ rm -f corectl.tar.gz
 chmod +x *
 
 # copy blobs
-echo "Copying files ..."
-sudo cp -f * ~/bin/
-
+echo "Copying files to ~/bin ..."
+cp -f * ~/bin/ > /dev/null 2>&1
 
 #
 cd ~/
