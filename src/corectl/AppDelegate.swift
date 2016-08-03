@@ -17,11 +17,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
     
-    @IBOutlet weak var passwordWindow: NSWindow!
-    
     @IBOutlet weak var statusMenu: NSMenu!
-    
-    @IBOutlet weak var sudoPassword: NSSecureTextField!
     
 
     /////////
@@ -192,14 +188,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // check if corectl blobs are in place
         check_that_corectl_blobs_are_in_place()
         
-        // check for corectl blobs latest version on github
-        check_for_corectl_blobs_github("yes")
-        
         // start corectld server
         ServerStartShell()
         
         // start local docker registry
         startDockerRegistry()
+        
+        // check for corectl blobs latest version on github
+        check_for_corectl_blobs_github("yes")
         
         // check for latest corectl.app release on github
         check_for_corectl_app_github("yes")

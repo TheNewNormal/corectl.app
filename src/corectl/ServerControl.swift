@@ -126,9 +126,6 @@ func ServerStop() {
     task.launch()
     task.waitUntilExit()
     
-    // run script and wait till corectld.runner stops
-    runScript("wait_for_corectld_runner_stop.command", arguments: "")
-    
     //
     menuItem.menu?.itemWithTag(1)?.title = "Server is off"
     menuItem.menu?.itemWithTag(1)?.state = NSOffState
