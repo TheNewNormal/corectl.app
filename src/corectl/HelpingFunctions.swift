@@ -9,6 +9,27 @@
 import Foundation
 import Cocoa
 
+
+// check if DNS port 53 is free to be used
+func check_if_DNS_port_in_use() -> Bool {
+    //
+    let script = NSBundle.mainBundle().resourcePath! + "/check_dns_status.command"
+    let status = shell(script, arguments: [])
+    NSLog("DNS port use status: '%@'",status)
+    //
+    if (status == "yes"){
+        // display the error message
+        let mText: String = "Corectl for macOS"
+        let infoText: String = "Cannot start \"corectld server\" as DNS port 53 is used by some application !!!"
+        displayWithMessage(mText, infoText: infoText)
+        return true
+    }
+    else {
+        return false
+    }
+    
+}
+
 // check if corectl blobs exist
 func check_that_corectl_blobs_are_in_place() {
     // Get App's resource folder

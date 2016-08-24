@@ -10,6 +10,7 @@
 		1318E2041D302A3400EC75E9 /* stop_docker_registry.command in Resources */ = {isa = PBXBuildFile; fileRef = 1318E2031D302A3400EC75E9 /* stop_docker_registry.command */; };
 		13278FF81D32A6B5001EF5F4 /* check_corectl_app_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 13278FF71D32A6B5001EF5F4 /* check_corectl_app_version.command */; };
 		134476021D2E5F220035B3B9 /* check_active_vms.command in Resources */ = {isa = PBXBuildFile; fileRef = 134476011D2E5F220035B3B9 /* check_active_vms.command */; };
+		134B4DD21D6DC65D0018D004 /* check_dns_status.command in Resources */ = {isa = PBXBuildFile; fileRef = 134B4DD11D6DC65D0018D004 /* check_dns_status.command */; };
 		134DD75C1D2FEBF100E60CDE /* check_corectld_status.command in Resources */ = {isa = PBXBuildFile; fileRef = 134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */; };
 		134DD75E1D300CE400E60CDE /* check_corectld_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 134DD75D1D300CE400E60CDE /* check_corectld_version.command */; };
 		134F3CEC1D2C2270002B9668 /* check_blobs_version.command in Resources */ = {isa = PBXBuildFile; fileRef = 134F3CEB1D2C2270002B9668 /* check_blobs_version.command */; };
@@ -28,7 +29,6 @@
 		137597631D2BC9CF000CB88F /* update_corectl_blobs.command in Resources */ = {isa = PBXBuildFile; fileRef = 137597621D2BC9CF000CB88F /* update_corectl_blobs.command */; };
 		137597651D2BD5A6000CB88F /* copy_corectl_blobs.command in Resources */ = {isa = PBXBuildFile; fileRef = 137597641D2BD5A5000CB88F /* copy_corectl_blobs.command */; };
 		1375976B1D2BF306000CB88F /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1375976A1D2BF306000CB88F /* Security.framework */; };
-		1375976F1D2C05AA000CB88F /* start_corectld.command in Resources */ = {isa = PBXBuildFile; fileRef = 1375976E1D2C05AA000CB88F /* start_corectld.command */; };
 		13BC96B41D2CF42C006D27B3 /* Notifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC96B31D2CF42C006D27B3 /* Notifications.swift */; };
 		13BC96B61D2CF4DC006D27B3 /* RunShellApps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC96B51D2CF4DC006D27B3 /* RunShellApps.swift */; };
 		13BC96BA1D2CF701006D27B3 /* HelpingFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13BC96B91D2CF701006D27B3 /* HelpingFunctions.swift */; };
@@ -42,6 +42,7 @@
 		1318E2031D302A3400EC75E9 /* stop_docker_registry.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = stop_docker_registry.command; sourceTree = "<group>"; };
 		13278FF71D32A6B5001EF5F4 /* check_corectl_app_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectl_app_version.command; sourceTree = "<group>"; };
 		134476011D2E5F220035B3B9 /* check_active_vms.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_active_vms.command; sourceTree = "<group>"; };
+		134B4DD11D6DC65D0018D004 /* check_dns_status.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_dns_status.command; sourceTree = "<group>"; };
 		134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectld_status.command; sourceTree = "<group>"; };
 		134DD75D1D300CE400E60CDE /* check_corectld_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_corectld_version.command; sourceTree = "<group>"; };
 		134F3CEB1D2C2270002B9668 /* check_blobs_version.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = check_blobs_version.command; sourceTree = "<group>"; };
@@ -60,7 +61,6 @@
 		137597621D2BC9CF000CB88F /* update_corectl_blobs.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = update_corectl_blobs.command; sourceTree = "<group>"; };
 		137597641D2BD5A5000CB88F /* copy_corectl_blobs.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = copy_corectl_blobs.command; sourceTree = "<group>"; };
 		1375976A1D2BF306000CB88F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		1375976E1D2C05AA000CB88F /* start_corectld.command */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = start_corectld.command; sourceTree = "<group>"; };
 		13BC96B31D2CF42C006D27B3 /* Notifications.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notifications.swift; sourceTree = "<group>"; };
 		13BC96B51D2CF4DC006D27B3 /* RunShellApps.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RunShellApps.swift; sourceTree = "<group>"; };
 		13BC96B91D2CF701006D27B3 /* HelpingFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpingFunctions.swift; sourceTree = "<group>"; };
@@ -93,9 +93,9 @@
 				136605371D23CCB200D497A0 /* functions.sh */,
 				137597641D2BD5A5000CB88F /* copy_corectl_blobs.command */,
 				134476011D2E5F220035B3B9 /* check_active_vms.command */,
-				1375976E1D2C05AA000CB88F /* start_corectld.command */,
-				13599DA81D4776E8004F8F5A /* start_docker_registry.command */,
+				134B4DD11D6DC65D0018D004 /* check_dns_status.command */,
 				134DD75B1D2FEBF100E60CDE /* check_corectld_status.command */,
+				13599DA81D4776E8004F8F5A /* start_docker_registry.command */,
 				1318E2031D302A3400EC75E9 /* stop_docker_registry.command */,
 				136605361D23CCB200D497A0 /* fetch_latest_iso_alpha.command */,
 				136605411D23E85800D497A0 /* fetch_latest_iso_beta.command */,
@@ -225,6 +225,7 @@
 				134DD75E1D300CE400E60CDE /* check_corectld_version.command in Resources */,
 				136605391D23CCB200D497A0 /* functions.sh in Resources */,
 				137597651D2BD5A6000CB88F /* copy_corectl_blobs.command in Resources */,
+				134B4DD21D6DC65D0018D004 /* check_dns_status.command in Resources */,
 				1375975B1D2BA78E000CB88F /* bin in Resources */,
 				136605381D23CCB200D497A0 /* fetch_latest_iso_alpha.command in Resources */,
 				134DD75C1D2FEBF100E60CDE /* check_corectld_status.command in Resources */,
@@ -233,7 +234,6 @@
 				136605431D23E85800D497A0 /* fetch_latest_iso_beta.command in Resources */,
 				13599DAD1D477C6D004F8F5A /* registry in Resources */,
 				13599DA91D4776E8004F8F5A /* start_docker_registry.command in Resources */,
-				1375976F1D2C05AA000CB88F /* start_corectld.command in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

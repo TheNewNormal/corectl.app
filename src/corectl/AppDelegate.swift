@@ -59,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if (status == "no") {
             menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
             // start corectld server
-            ServerStartShell()
+            ServerStart()
             //
             menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
         }
@@ -146,7 +146,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func About(sender: NSMenuItem) {
         let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")as? String
         let mText: String = "Corectl for macOS v" + version!
-        let infoText: String = "It is a simple wrapper around the corectld server, allows to have a control via the Status Bar App !!!"
+        let infoText: String = "It is a simple wrapper around the \"corectld\" server, allows to have a control via the Status Bar App !!!"
         displayWithMessage(mText, infoText: infoText)
     }
     
@@ -188,8 +188,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // check if corectl blobs are in place
         check_that_corectl_blobs_are_in_place()
         
+        // send stop to corectld just in case it was left running
+        ServerStop()
+        
         // start corectld server
-        ServerStartShell()
+        ServerStart()
         
         // start local docker registry
         startDockerRegistry()
