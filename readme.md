@@ -5,7 +5,7 @@ Corectl App for macOS
 
 **Note:** `Corectl App` only controls `corectld` server daemon, and is very, very, light on macOS system resources, when running and when idle. Also if there are no VMs running `corectld` server daemon is not using much resources too.
 
-[corectl](https://github.com/TheNewNormal/corectl) allows to run CoreOS VMs on macOS using [xhyve](https://github.com/mist64/xhyve) which uses native macOS Hypervisor framework. Using native macOS Hypervisor framework eliminates any needs to use Virtual Box and other similar software to run your CoreOS VMs.
+[corectl](https://github.com/TheNewNormal/corectl) allows to run CoreOS VMs on macOS using native macOS Hypervisor framework which eliminates any needs to use Virtual Box or any other similar virtualisation software.
 
 ![Corectl_APP](corectl_app.png "Corectl_APP")
 
@@ -17,6 +17,7 @@ How to install Corectl App for macOS
  -----------
   - **macOS 10.10.3** Yosemite or later 
   - Mac 2010 or later for this to work.
+  - There should be nothing else hogging port 53, as `corectld` comes with inbuilt DNS server, which allows easier setup of CoreOS VMs.
 
 
 ####Download:
