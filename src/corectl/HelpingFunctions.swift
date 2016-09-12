@@ -13,7 +13,7 @@ import Cocoa
 // check if DNS port 53 is free to be used
 func check_if_DNS_port_in_use() -> Bool {
     //
-    let script = NSBundle.mainBundle().resourcePath! + "/check_dns_status.command"
+    let script = Bundle.main.resourcePath! + "/check_dns_status.command"
     let status = shell(script, arguments: [])
     NSLog("DNS port use status: '%@'",status)
     //
@@ -33,12 +33,12 @@ func check_if_DNS_port_in_use() -> Bool {
 // check if corectl blobs exist
 func check_that_corectl_blobs_are_in_place() {
     // Get App's resource folder
-    let resoucesPathFromApp = NSBundle.mainBundle().resourcePath!
+    let resoucesPathFromApp = Bundle.main.resourcePath!
     let bin_folder = resoucesPathFromApp + "/bin"
 
     // check for corectl files in user's home folder
     let filePath1 = NSHomeDirectory() + "/bin/corectl"
-    if (NSFileManager.defaultManager().fileExistsAtPath(filePath1))
+    if (FileManager.default.fileExists(atPath: filePath1))
     {
         print("corectl available");
     }
@@ -49,7 +49,7 @@ func check_that_corectl_blobs_are_in_place() {
     }
     //
     let filePath2 = NSHomeDirectory() + "/bin/corectld"
-    if (NSFileManager.defaultManager().fileExistsAtPath(filePath2))
+    if (FileManager.default.fileExists(atPath: filePath2))
     {
         print("corectld available");
     }
@@ -60,7 +60,7 @@ func check_that_corectl_blobs_are_in_place() {
     }
     //
     let filePath3 = NSHomeDirectory() + "/bin/corectld.runner"
-    if (NSFileManager.defaultManager().fileExistsAtPath(filePath3))
+    if (FileManager.default.fileExists(atPath: filePath3))
     {
         print("corectld.runner available");
     }
@@ -71,7 +71,7 @@ func check_that_corectl_blobs_are_in_place() {
     }
     //
     let filePath4 = NSHomeDirectory() + "/bin/qcow-tool"
-    if (NSFileManager.defaultManager().fileExistsAtPath(filePath4))
+    if (FileManager.default.fileExists(atPath: filePath4))
     {
         print("qcow-tool available");
     }
@@ -85,7 +85,7 @@ func check_that_corectl_blobs_are_in_place() {
 
 // start local docker registry
 func startDockerRegistry() {
-    let resoucesPathFromApp = NSBundle.mainBundle().resourcePath!
+    let resoucesPathFromApp = Bundle.main.resourcePath!
     runScript("start_docker_registry.command", arguments: resoucesPathFromApp )
 }
 
@@ -95,8 +95,8 @@ func startDockerRegistry() {
 // bundled helper app is Apple's recommended approach, but that
 // has a lot of configuration overhead to get right.
 func addToLoginItems() {
-    NSTask.launchedTaskWithLaunchPath(
-        "/usr/bin/osascript",
+    Process.launchedProcess(
+        launchPath: "/usr/bin/osascript",
         arguments: [
             "-e",
             "tell application \"System Events\" to make login item at end with properties {path:\"/Applications/corectl.app\", hidden:false, name:\"Corectl\"}"
@@ -105,10 +105,10 @@ func addToLoginItems() {
 }
 
 // send notification to screen
-func notifyUserWithTitle(title: String, text: String) {
+func notifyUserWithTitle(_ title: String, text: String) {
     let notification: NSUserNotification = NSUserNotification()
     notification.title = title
     notification.informativeText = text
-    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+    NSUserNotificationCenter.default.deliver(notification)
 }
 

@@ -25,7 +25,7 @@ func ServerStart() {
     let menuItem : NSStatusItem = statusItem
     
     // start corectld server
-    let task: NSTask = NSTask()
+    let task: Process = Process()
     let launchPath = "~/bin/corectld"
     task.launchPath = launchPath
     task.arguments = ["start", "--user", "$(whoami)"]
@@ -33,29 +33,28 @@ func ServerStart() {
     task.waitUntilExit()
     
     //
-    let time = dispatch_time(dispatch_time_t(DISPATCH_TIME_NOW), 4 * Int64(NSEC_PER_SEC))
-    dispatch_after(time, dispatch_get_main_queue()) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
         //
-        let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
+        let script = Bundle.main.resourcePath! + "/check_corectld_status.command"
         let status = shell(script, arguments: [])
         NSLog("corectld running status: '%@'",status)
         //
         if (status == "no"){
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(1)?.title = "Server is Off"
+            menuItem.menu?.item(withTag: 1)?.title = "Server is Off"
             // display the error message
             let mText: String = "Corectl for macOS"
             let infoText: String = "Cannot start the \"corectld server\" !!!"
             displayWithMessage(mText, infoText: infoText)
         }
         else {
-            menuItem.menu?.itemWithTag(1)?.title = "Server is running"
-            menuItem.menu?.itemWithTag(1)?.state = NSOnState
+            menuItem.menu?.item(withTag: 1)?.title = "Server is running"
+            menuItem.menu?.item(withTag: 1)?.state = NSOnState
             //
-            let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_version.command"
+            let script = Bundle.main.resourcePath! + "/check_corectld_version.command"
             let version = shell(script, arguments: [])
             NSLog("corectld version: '%@'",version)
-            menuItem.menu?.itemWithTag(11)?.title = " Server version: " + version
+            menuItem.menu?.item(withTag: 11)?.title = " Server version: " + version
         }
     }
 }
@@ -70,15 +69,15 @@ func ServerStop() {
     //notifyUserWithTitle("Corectl App", text: "All running VMs will be stopped !!!")
     
     // stop corectld server
-    let task = NSTask()
+    let task = Process()
     task.launchPath = "~/bin/corectld"
     task.arguments = ["stop"]
     task.launch()
     task.waitUntilExit()
     
     //
-    menuItem.menu?.itemWithTag(1)?.title = "Server is off"
-    menuItem.menu?.itemWithTag(1)?.state = NSOffState
+    menuItem.menu?.item(withTag: 1)?.title = "Server is off"
+    menuItem.menu?.item(withTag: 1)?.state = NSOffState
 }
 
 
@@ -91,25 +90,25 @@ func RestartServer() {
     print("Restarting corectld server")
     let notification: NSUserNotification = NSUserNotification()
     notification.title = "Restarting corectld server"
-    NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+    NSUserNotificationCenter.default.deliver(notification)
     
     // stop corectld server
-    menuItem.menu?.itemWithTag(1)?.title = "Server is stopping"
+    menuItem.menu?.item(withTag: 1)?.title = "Server is stopping"
     ServerStop()
     
     // start corectld server
-    menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
+    menuItem.menu?.item(withTag: 1)?.title = "Server is starting"
     ServerStart()
     
     //
-    menuItem.menu?.itemWithTag(3)?.title = "Check for App updates"
-    menuItem.menu?.itemWithTag(4)?.title = "Check for corectl updates"
+    menuItem.menu?.item(withTag: 3)?.title = "Check for App updates"
+    menuItem.menu?.item(withTag: 4)?.title = "Check for corectl updates"
 }
 
 
 //
 func appDelegate () -> AppDelegate
 {
-    return NSApplication.sharedApplication().delegate as! AppDelegate
+    return NSApplication.shared().delegate as! AppDelegate
 }
 

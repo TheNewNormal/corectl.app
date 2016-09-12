@@ -11,9 +11,9 @@ import Cocoa
 
 // App latest version checks
 // check for corectl App update/change menu item text
-func check_for_corectl_app_github(showPopUp:String?=nil, runViaUpdateMenu:String?=nil) {
+func check_for_corectl_app_github(_ showPopUp:String?=nil, runViaUpdateMenu:String?=nil) {
     //
-    let script = NSBundle.mainBundle().resourcePath! + "/check_corectl_app_version.command"
+    let script = Bundle.main.resourcePath! + "/check_corectl_app_version.command"
     let latest_app_version = shell(script, arguments: [])
     print("latest app version: " + latest_app_version)
     //
@@ -22,7 +22,7 @@ func check_for_corectl_app_github(showPopUp:String?=nil, runViaUpdateMenu:String
         return
     }
     //
-    let installed_app_version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")as? String
+    let installed_app_version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")as? String
     print("installed app version: " + installed_app_version!)
     //
     if (latest_app_version == "v" + installed_app_version!){
@@ -35,7 +35,7 @@ func check_for_corectl_app_github(showPopUp:String?=nil, runViaUpdateMenu:String
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(3)?.title = "Check for App updates"
+            menuItem.menu?.item(withTag: 3)?.title = "Check for App updates"
         }
     }
     else {
@@ -47,7 +47,7 @@ func check_for_corectl_app_github(showPopUp:String?=nil, runViaUpdateMenu:String
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(3)?.title = "Download App updates..."
+            menuItem.menu?.item(withTag: 3)?.title = "Download App updates..."
         }
     }
 }
@@ -57,29 +57,28 @@ func download_corectl_app_github() {
     let alert: NSAlert = NSAlert()
     alert.messageText = "There is a new version of Corectl App available !!!"
     alert.informativeText = "Open download URL in your browser?"
-    alert.alertStyle = NSAlertStyle.WarningAlertStyle
-    alert.addButtonWithTitle("OK")
-    alert.addButtonWithTitle("Cancel")
+    alert.alertStyle = NSAlertStyle.warning
+    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: "Cancel")
     if alert.runModal() == NSAlertFirstButtonReturn {
         // if OK clicked 
         // open URL in default browser
-        let url: String = ["https://github.com/TheNewNormal/corectl.app/releases"].componentsJoinedByString("")
-        NSWorkspace.sharedWorkspace().openURL(NSURL(string: url)!)
+        let url: String = "https://github.com/TheNewNormal/corectl.app/releases"
+        NSWorkspace.shared().open(URL(string: url)!)
     }
     else {
         let menuItem : NSStatusItem = statusItem
-        menuItem.menu?.itemWithTag(3)?.title = "Download App updates..."
+        menuItem.menu?.item(withTag: 3)?.title = "Download App updates..."
     }
-    
 }
 ////
 
 
 // corectld latest version checks
 // check for corectl blobs update/change menu item text
-func check_for_corectl_blobs_github(showPopUp:String?=nil, runViaUpdateMenu:String?=nil) {
+func check_for_corectl_blobs_github(_ showPopUp:String?=nil, runViaUpdateMenu:String?=nil) {
     //
-    let script = NSBundle.mainBundle().resourcePath! + "/check_blobs_version.command"
+    let script = Bundle.main.resourcePath! + "/check_blobs_version.command"
     let status = shell(script, arguments: [])
     NSLog("Corectld update status: '%@'",status)
     //
@@ -90,7 +89,7 @@ func check_for_corectl_blobs_github(showPopUp:String?=nil, runViaUpdateMenu:Stri
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(4)?.title = "Download corectl updates..."
+            menuItem.menu?.item(withTag: 4)?.title = "Download corectl updates..."
         }
     }
     else {
@@ -101,23 +100,23 @@ func check_for_corectl_blobs_github(showPopUp:String?=nil, runViaUpdateMenu:Stri
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(4)?.title = "Check for corectl updates"
+            menuItem.menu?.item(withTag: 4)?.title = "Check for corectl updates"
         }
     }
 }
 
 // download corectl blobs
-func download_corectl_blobs_github(runViaUpdateMenu:String?=nil) {
+func download_corectl_blobs_github(_ runViaUpdateMenu:String?=nil) {
     let alert: NSAlert = NSAlert()
     alert.messageText = "There is a new version of Corectld server available !!!"
     alert.informativeText = "Do you want to download it?"
-    alert.alertStyle = NSAlertStyle.WarningAlertStyle
-    alert.addButtonWithTitle("OK")
-    alert.addButtonWithTitle("Cancel")
+    alert.alertStyle = NSAlertStyle.warning
+    alert.addButton(withTitle: "OK")
+    alert.addButton(withTitle: "Cancel")
     if alert.runModal() == NSAlertFirstButtonReturn {
         // if OK clicked
         // run update script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/update_corectl_blobs.command")
+        runTerminal(Bundle.main.resourcePath! + "/update_corectl_blobs.command")
         //
 //        if (runViaUpdateMenu == "yes"){
             // restart corectld server if no VMs are running
@@ -135,35 +134,35 @@ func download_corectl_blobs_github(runViaUpdateMenu:String?=nil) {
     }
     else {
         let menuItem : NSStatusItem = statusItem
-        menuItem.menu?.itemWithTag(4)?.title = "Download corectl updates..."
+        menuItem.menu?.item(withTag: 4)?.title = "Download corectl updates..."
     }
 }
 
 
 func download_test() {
     
-    if let audioUrl = NSURL(string: "https://github.com/TheNewNormal/corectl/releases/download/v0.7.5/corectl-v0.7.5-macOS-amd64.tar.gz") {
+    if let audioUrl = URL(string: "https://github.com/TheNewNormal/corectl/releases/download/v0.7.5/corectl-v0.7.5-macOS-amd64.tar.gz") {
         
         // then lets create your document folder url
-        let documentsDirectoryURL =  NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+        let documentsDirectoryURL =  FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
         
         // lets create your destination file url
-        let destinationUrl = documentsDirectoryURL.URLByAppendingPathComponent(audioUrl.lastPathComponent ?? "corectl-v0.7.5-macOS-amd64.tar.gz")
+        let destinationUrl = documentsDirectoryURL.appendingPathComponent(audioUrl.lastPathComponent )
         print(destinationUrl)
         
         // to check if it exists before downloading it
-        if NSFileManager().fileExistsAtPath(destinationUrl.path!) {
+        if FileManager().fileExists(atPath: destinationUrl.path) {
             print("The file already exists at path")
             
             // if the file doesn't exist
         } else {
             
             // you can use NSURLSession.sharedSession to download the data asynchronously
-            NSURLSession.sharedSession().downloadTaskWithURL(audioUrl, completionHandler: { (location, response, error) -> Void in
-                guard let location = location where error == nil else { return }
+            URLSession.shared.downloadTask(with: audioUrl, completionHandler: { (location, response, error) -> Void in
+                guard let location = location , error == nil else { return }
                 do {
                     // after downloading your file you need to move it to your destination url
-                    try NSFileManager().moveItemAtURL(location, toURL: destinationUrl)
+                    try FileManager().moveItem(at: location, to: destinationUrl)
                     print("File moved to documents folder")
                 } catch let error as NSError {
                     print(error.localizedDescription)
