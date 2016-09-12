@@ -10,7 +10,7 @@ import Cocoa
 import Foundation
 import Security
 
-var statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(-1)
+var statusItem = NSStatusBar.system().statusItem(withLength: -1)
 
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
@@ -21,7 +21,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 
     /////////
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+    func applicationDidFinishLaunching(_ aNotification: Notification) {
         let icon = NSImage(named: "StatusItemIcon")
         
         statusItem.image = icon
@@ -42,35 +42,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // menu functions //
  
-    @IBAction func Server(sender: NSMenuItem) {
+    @IBAction func Server(_ sender: NSMenuItem) {
         // an empty funtion just to create menu item
     }
     
 
     // restart corectld server
-    @IBAction func Restart(sender: NSMenuItem) {
+    @IBAction func Restart(_ sender: NSMenuItem) {
         //
         let menuItem : NSStatusItem = statusItem
         //
-        let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
+        let script = Bundle.main.resourcePath! + "/check_corectld_status.command"
         let status = shell(script, arguments: [])
         NSLog("corectld running status: '%@'",status)
         //
         if (status == "no") {
-            menuItem.menu?.itemWithTag(1)?.title = "Server is starting"
+            menuItem.menu?.item(withTag: 1)?.title = "Server is starting"
             // start corectld server
             ServerStart()
             //
-            menuItem.menu?.itemWithTag(3)?.title = "Check for updates"
+            menuItem.menu?.item(withTag: 3)?.title = "Check for updates"
         }
         else {
             //
             let alert: NSAlert = NSAlert()
             alert.messageText = "Restarting Corectld server will halt all your running VMs !!!"
             alert.informativeText = "Are you sure you want to do that?"
-            alert.alertStyle = NSAlertStyle.WarningAlertStyle
-            alert.addButtonWithTitle("OK")
-            alert.addButtonWithTitle("Cancel")
+            alert.alertStyle = NSAlertStyle.warning
+            alert.addButton(withTitle: "OK")
+            alert.addButton(withTitle: "Cancel")
             if alert.runModal() == NSAlertFirstButtonReturn {
                 // if OK clicked run restart server
                 RestartServer()
@@ -81,24 +81,24 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // check and download updates for corectl and App
     // check fo updates for App
-    @IBAction func checkForAppUpdates(sender: NSMenuItem) {
+    @IBAction func checkForAppUpdates(_ sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
         notification.informativeText = "Updates for Corectl App will be checked"
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        NSUserNotificationCenter.default.deliver(notification)
         
         // run check function
         check_for_corectl_app_github("yes", runViaUpdateMenu: "yes")
     }
     
     // check updates for corectl server
-    @IBAction func checkForCorectldUpdates(sender: NSMenuItem) {
+    @IBAction func checkForCorectldUpdates(_ sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
         notification.informativeText = "Updates for Corectl tools will be checked"
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        NSUserNotificationCenter.default.deliver(notification)
         
         // run check function
         check_for_corectl_blobs_github("yes", runViaUpdateMenu: "yes")
@@ -107,44 +107,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     ////
     
     // fetch latest ISOs
-    @IBAction func fetchLatestISOAlpha(sender: NSMenuItem) {
+    @IBAction func fetchLatestISOAlpha(_ sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
         notification.informativeText = "CoreOS Alpha ISO image will be updated"
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        NSUserNotificationCenter.default.deliver(notification)
         
         // run the script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_alpha.command")
+        runTerminal(Bundle.main.resourcePath! + "/fetch_latest_iso_alpha.command")
     }
 //
-    @IBAction func fetchLatestISOBeta(sender: NSMenuItem) {
+    @IBAction func fetchLatestISOBeta(_ sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
         notification.informativeText = "CoreOS Beta ISO image will be updated"
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        NSUserNotificationCenter.default.deliver(notification)
         
         // run the script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_beta.command")
+        runTerminal(Bundle.main.resourcePath! + "/fetch_latest_iso_beta.command")
     }
     //
-    @IBAction func fetchLatestISOStable(sender: NSMenuItem) {
+    @IBAction func fetchLatestISOStable(_ sender: NSMenuItem) {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
         notification.informativeText = "CoreOS Stable ISO image will be updated"
-        NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+        NSUserNotificationCenter.default.deliver(notification)
         
         // run the script
-        runTerminal(NSBundle.mainBundle().resourcePath! + "/fetch_latest_iso_stable.command")
+        runTerminal(Bundle.main.resourcePath! + "/fetch_latest_iso_stable.command")
     }
     //// fetch latest ISOs
 
     
     // About App
-    @IBAction func About(sender: NSMenuItem) {
-        let version = NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString")as? String
+    @IBAction func About(_ sender: NSMenuItem) {
+        let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")as? String
         let mText: String = "Corectl for macOS v" + version!
         let infoText: String = "It is a simple wrapper around the \"corectld\" server, allows to have a control via the Status Bar App !!!"
         displayWithMessage(mText, infoText: infoText)
@@ -152,20 +152,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
 
     // Quit App
-    @IBAction func Quit(sender: NSMenuItem) {
+    @IBAction func Quit(_ sender: NSMenuItem) {
         //
         let alert: NSAlert = NSAlert()
         alert.messageText = "Quitting App will halt all your running VMs !!!"
         alert.informativeText = "Are you sure you want to close the App?"
-        alert.alertStyle = NSAlertStyle.WarningAlertStyle
-        alert.addButtonWithTitle("OK")
-        alert.addButtonWithTitle("Cancel")
+        alert.alertStyle = NSAlertStyle.warning
+        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: "Cancel")
         if alert.runModal() == NSAlertFirstButtonReturn {
             // if OK clicked 
             // send a notification on to the screen
             let notification: NSUserNotification = NSUserNotification()
             notification.title = "Quitting Corectl App"
-            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(notification)
+            NSUserNotificationCenter.default.deliver(notification)
 
             // stop corectld server
             ServerStop()
@@ -205,13 +205,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         // Timer
         // check for latest app and corectl blobs on github and update menu items
-        _ = NSTimer.scheduledTimerWithTimeInterval(14400.0, target: self, selector: #selector(AppDelegate.check_for_corectl_app_corectld_github), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 14400.0, target: self, selector: #selector(AppDelegate.check_for_corectl_app_corectld_github), userInfo: nil, repeats: true)
         
         // check for server status
-        _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.server_status), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(AppDelegate.server_status), userInfo: nil, repeats: true)
         
         // check for active VMs and update menu item
-        _ = NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector(AppDelegate.active_vms), userInfo: nil, repeats: true)
+        _ = Timer.scheduledTimer(timeInterval: 2.0, target: self, selector: #selector(AppDelegate.active_vms), userInfo: nil, repeats: true)
     }
     
     ////
@@ -222,7 +222,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // check if app runs from dmg
     func check_for_dmg() {
         // get the App's main bundle path
-        let resoucesPathFromApp = NSBundle.mainBundle().resourcePath!
+        let resoucesPathFromApp = Bundle.main.resourcePath!
         NSLog("applicationDirectory: '%@'", resoucesPathFromApp)
         //
         let dmgPath: String = "/Volumes/corectl/corectl.app/Contents/Resources"
@@ -234,7 +234,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let infoText: String = "Please copy App to your Applications folder ..."
             displayWithMessage(mText, infoText: infoText)
             // exiting App
-            NSApplication.sharedApplication().terminate(self)
+            NSApplication.shared().terminate(self)
         }
     }
     ////
@@ -243,17 +243,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Check/Update menu items
     // check server status and update menu
     func server_status() {
-        let script = NSBundle.mainBundle().resourcePath! + "/check_corectld_status.command"
+        let script = Bundle.main.resourcePath! + "/check_corectld_status.command"
         let status = shell(script, arguments: [])
         // NSLog("corectld running status: '%@'",status)
         //
         if (status == "yes"){
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(1)?.title = "Server is running"
+            menuItem.menu?.item(withTag: 1)?.title = "Server is running"
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(1)?.title = "Server is Off"
+            menuItem.menu?.item(withTag: 1)?.title = "Server is Off"
         }
     }
     
@@ -269,7 +269,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // show active vms in the menu
     func active_vms() {
-        let script = NSBundle.mainBundle().resourcePath! + "/check_active_vms.command"
+        let script = Bundle.main.resourcePath! + "/check_active_vms.command"
         let status: String = shell(script, arguments: [])
         //NSLog("Active VMs: '%@'",status)
         
@@ -277,12 +277,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if ( status != "0" ){
             // update menu item
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(10)?.title = " Active VMs: " + status
+            menuItem.menu?.item(withTag: 10)?.title = " Active VMs: " + status
         }
         else {
             // update menu item
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.itemWithTag(10)?.title = " Active VMs: 0"
+            menuItem.menu?.item(withTag: 10)?.title = " Active VMs: 0"
         }
     }
 
