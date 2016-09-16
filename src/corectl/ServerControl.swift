@@ -13,9 +13,6 @@ import Cocoa
 // start corectld server
 func ServerStart() {
     
-    // check if DNS port 53 is not in use
-    if check_if_DNS_port_in_use() {return}
-    
     // send an alert about the user password
     let mText: String = "Corectl for macOS"
     let infoText: String = "You will be asked to type your \"user\" password, needed to start \"corectld\" server !!!"

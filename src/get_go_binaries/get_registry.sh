@@ -16,7 +16,7 @@ cd $GOPATH/src/github.com/docker/distribution
 GOPATH=$(PWD)/Godeps/_workspace:$GOPATH make binaries
 
 cd $current_folder
-cp -f $GOPATH/src/github.com/docker/distribution/bin/registry ../docker_registry
+cp -f $GOPATH/src/github.com/docker/distribution/bin/registry ../registry
 
 # clean up go folder
 rm -fr $GOPATH/src/github.com/docker
