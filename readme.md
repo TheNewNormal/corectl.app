@@ -17,7 +17,6 @@ How to install Corectl App for macOS
  -----------
   - **macOS 10.10.3** Yosemite or later 
   - Mac 2010 or later for this to work.
-  - **There should be nothing else hogging port 53, as `corectld` comes with inbuilt DNS server, which allows easier setup of CoreOS VMs.**
 
 
 ####Download:
