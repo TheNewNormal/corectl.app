@@ -10,5 +10,5 @@ res_folder=$1
 mkdir ~/bin > /dev/null 2>&1
 
 # copy blobs
-echo "Copying files ..."
+echo "Copying files…"
 cp -f "${res_folder}"/* ~/bin/

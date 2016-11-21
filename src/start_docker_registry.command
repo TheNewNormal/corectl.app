@@ -12,6 +12,6 @@ kill $(ps aux | grep "[r]egistry serve config.yml" | awk {'print $2'}) >/dev/nul
 sleep 1
 
 # start registry
-echo "Starting Docker Registry v2 on 192.168.64.1:5000 ..."
+echo "Starting Docker Registry v2 on 192.168.64.1:5000…"
 cd ~/.coreos/registry
 nohup "${res_folder}"/registry/registry serve config.yml >/dev/null 2>&1 &
