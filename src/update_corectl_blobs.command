@@ -20,7 +20,7 @@ rm -f corectl.tar.gz
 chmod +x *
 
 # copy blobs
-echo "Copying files to ~/bin ..."
+echo "Copying files to ~/bin …"
 cp -f * ~/bin/ > /dev/null 2>&1
 
 #
@@ -28,7 +28,7 @@ cd ~/
 rm -fr ~/tmp/corectl > /dev/null 2>&1
 
 #
-echo "Download has finished !!!"
+echo "The download has finished."
 echo " "
 
 # check if corectld is running
@@ -36,21 +36,22 @@ CHECK_SERVER_STATUS=$(~/bin/corectld status 2>&1 | grep "Uptime:")
 
 if [[ "$CHECK_SERVER_STATUS" == "" ]]; then
     # corectld is not running
-    echo "Corectld is updated to latest version ..."
+    echo "Corectld is updated to latest version."
 else
     # check for active VMs
     vms=$(~/bin/corectld status | grep "Active VMs:" | awk '{print $3}')
     if [[ "$vms" -ne "0" ]]; then
     # active VMs
-        echo "You need to restart 'corectld' server via menu, but Halt all your VMs first, as you have $vms running !!! "
+        echo "You have $vms VMs running. Please stop them."
+        echo "Then restart the 'corectld' server via the menu."
     else
         # no vms
-        echo "You need to restart 'corectld' server via menu !!! "
+        echo "Please restart the 'corectld' server via the menu."
     fi
 fi
 
 echo " "
-pause 'Press [Enter] key to continue...'
+pause 'Please press [Enter] to continue.'
 
 exit 0
 

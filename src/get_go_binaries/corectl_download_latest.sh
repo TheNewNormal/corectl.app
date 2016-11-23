@@ -20,7 +20,7 @@ chmod +x *
 
 cd $current_folder
 # copy blobs
-echo "Copying files ..."
+echo "Copying files…"
 cp -f bin/* ../bin
 
 #
