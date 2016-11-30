@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         else {
             //
             let alert: NSAlert = NSAlert()
-            alert.messageText = "Restarting Corectld server will halt all your running VMs !!!"
+            alert.messageText = "Restarting Corectld server will halt all your running VMs."
             alert.informativeText = "Are you sure you want to do that?"
             alert.alertStyle = NSAlertStyle.warning
             alert.addButton(withTitle: "OK")
@@ -85,7 +85,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
-        notification.informativeText = "Updates for Corectl App will be checked"
+        notification.informativeText = "Updates for Corectl App will be checked…"
         NSUserNotificationCenter.default.deliver(notification)
         
         // run check function
@@ -97,7 +97,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
-        notification.informativeText = "Updates for Corectl tools will be checked"
+        notification.informativeText = "Updates for Corectl tools will be checked…"
         NSUserNotificationCenter.default.deliver(notification)
         
         // run check function
@@ -111,7 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
-        notification.informativeText = "CoreOS Alpha ISO image will be updated"
+        notification.informativeText = "CoreOS Alpha ISO image will be updated…"
         NSUserNotificationCenter.default.deliver(notification)
         
         // run the script
@@ -122,7 +122,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
-        notification.informativeText = "CoreOS Beta ISO image will be updated"
+        notification.informativeText = "CoreOS Beta ISO image will be updated…"
         NSUserNotificationCenter.default.deliver(notification)
         
         // run the script
@@ -133,7 +133,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // send a notification on to the screen
         let notification: NSUserNotification = NSUserNotification()
         notification.title = "Corectl"
-        notification.informativeText = "CoreOS Stable ISO image will be updated"
+        notification.informativeText = "CoreOS Stable ISO image will be updated…"
         NSUserNotificationCenter.default.deliver(notification)
         
         // run the script
@@ -146,7 +146,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func About(_ sender: NSMenuItem) {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")as? String
         let mText: String = "Corectl for macOS v" + version!
-        let infoText: String = "It is a simple wrapper around the \"corectld\" server, allows to have a control via the Status Bar App !!!"
+        let infoText: String = "A simple wrapper around the \"corectld\" server. Allows to have control your server via the Status Bar App."
         displayWithMessage(mText, infoText: infoText)
     }
     
@@ -155,7 +155,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func Quit(_ sender: NSMenuItem) {
         //
         let alert: NSAlert = NSAlert()
-        alert.messageText = "Quitting App will halt all your running VMs !!!"
+        alert.messageText = "Quitting the Corectl App will halt all your running VMs."
         alert.informativeText = "Are you sure you want to close the App?"
         alert.alertStyle = NSAlertStyle.warning
         alert.addButton(withTitle: "OK")
@@ -164,7 +164,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             // if OK clicked 
             // send a notification on to the screen
             let notification: NSUserNotification = NSUserNotification()
-            notification.title = "Quitting Corectl App"
+            notification.title = "Quitting Corectl App…"
             NSUserNotificationCenter.default.deliver(notification)
 
             // stop corectld server
@@ -230,8 +230,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // check resourcePath and exit the App if it runs from the dmg
         if resoucesPathFromApp.isEqual(dmgPath) {
             // show alert message
-            let mText: String = "\("Corectl App cannot be started from DMG !!!")"
-            let infoText: String = "Please copy App to your Applications folder ..."
+            let mText: String = "\("Corectl App cannot be started from DMG.")"
+            let infoText: String = "Please copy the App to your Applications folder."
             displayWithMessage(mText, infoText: infoText)
             // exiting App
             NSApplication.shared().terminate(self)
@@ -249,11 +249,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         //
         if (status == "yes"){
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.item(withTag: 1)?.title = "Server is running"
+            menuItem.menu?.item(withTag: 1)?.title = "Server status: Running"
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.item(withTag: 1)?.title = "Server is Off"
+            menuItem.menu?.item(withTag: 1)?.title = "Server status: Off"
         }
     }
     
@@ -282,7 +282,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         else {
             // update menu item
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.item(withTag: 10)?.title = " Active VMs: 0"
+            menuItem.menu?.item(withTag: 10)?.title = "No Active VMs"
         }
     }
 

@@ -9,7 +9,7 @@ source "${DIR}"/functions.sh
 CHANNEL=stable
 
 echo " "
-echo "Fetching lastest CoreOS $CHANNEL channel ISO ..."
+echo "Fetching lastest CoreOS $CHANNEL channel ISO…"
 echo " "
 #
 ~/bin/corectl pull --channel="$CHANNEL" 2>&1 | tee ~/.coreos/tmp/check_channel
@@ -17,13 +17,13 @@ CHECK_CHANNEL=$(cat ~/.coreos/tmp/check_channel | grep "downloading" | awk '{pri
 #
 if [[ "$CHECK_CHANNEL" == "downloading" ]]; then
     echo " "
-    echo "You need to reload your VMs to use the lastest version !!! "
+    echo "You will need to reload your VMs to use the lastest version."
     rm -f ~/.coreos/tmp/check_channel
 else
-    echo "You have the latest ISO already ..."
+    echo "You already have the latest CoreOS ISO."
 fi
 
 echo " "
-pause 'Press [Enter] key to continue...'
+pause 'Please press [Enter] to continue.'
 
 exit 0

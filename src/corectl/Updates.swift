@@ -15,10 +15,10 @@ func check_for_corectl_app_github(_ showPopUp:String?=nil, runViaUpdateMenu:Stri
     //
     let script = Bundle.main.resourcePath! + "/check_corectl_app_version.command"
     let latest_app_version = shell(script, arguments: [])
-    print("latest app version: " + latest_app_version)
+    print("Latest app version: " + latest_app_version)
     //
     if (latest_app_version == "" ) {
-        NSLog("Cannot check latest version on Github, must be API limit was reached or other Github tecnnical issues !!!")
+        NSLog("We can not check the latest version on Github. There was either an API limit reached, or Github has technical issues.")
         return
     }
     //
@@ -30,7 +30,7 @@ func check_for_corectl_app_github(_ showPopUp:String?=nil, runViaUpdateMenu:Stri
         // then show popup on the screeen
         if (runViaUpdateMenu == "yes") {
             let mText: String = "Corectl App for macOS"
-            let infoText: String = "You are up-to-date ..."
+            let infoText: String = "You are up-to-date!"
             displayWithMessage(mText, infoText: infoText)
         }
         else {
@@ -47,7 +47,7 @@ func check_for_corectl_app_github(_ showPopUp:String?=nil, runViaUpdateMenu:Stri
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.item(withTag: 3)?.title = "Download App updates..."
+            menuItem.menu?.item(withTag: 3)?.title = "Download App updates"
         }
     }
 }
@@ -55,7 +55,7 @@ func check_for_corectl_app_github(_ showPopUp:String?=nil, runViaUpdateMenu:Stri
 func download_corectl_app_github() {
     // show popup on the screen
     let alert: NSAlert = NSAlert()
-    alert.messageText = "There is a new version of Corectl App available !!!"
+    alert.messageText = "There is a new version of the Corectl App available"
     alert.informativeText = "Open download URL in your browser?"
     alert.alertStyle = NSAlertStyle.warning
     alert.addButton(withTitle: "OK")
@@ -89,7 +89,7 @@ func check_for_corectl_blobs_github(_ showPopUp:String?=nil, runViaUpdateMenu:St
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.item(withTag: 4)?.title = "Download corectl updates..."
+            menuItem.menu?.item(withTag: 4)?.title = "Downloading Corectl updates…"
         }
     }
     else {
@@ -100,7 +100,7 @@ func check_for_corectl_blobs_github(_ showPopUp:String?=nil, runViaUpdateMenu:St
         }
         else {
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.item(withTag: 4)?.title = "Check for corectl updates"
+            menuItem.menu?.item(withTag: 4)?.title = "Check for Corectl updates"
         }
     }
 }
@@ -108,7 +108,7 @@ func check_for_corectl_blobs_github(_ showPopUp:String?=nil, runViaUpdateMenu:St
 // download corectl blobs
 func download_corectl_blobs_github(_ runViaUpdateMenu:String?=nil) {
     let alert: NSAlert = NSAlert()
-    alert.messageText = "There is a new version of Corectld server available !!!"
+    alert.messageText = "There is a new version of the Corectld server available"
     alert.informativeText = "Do you want to download it?"
     alert.alertStyle = NSAlertStyle.warning
     alert.addButton(withTitle: "OK")
@@ -129,12 +129,12 @@ func download_corectl_blobs_github(_ runViaUpdateMenu:String?=nil) {
 //            }
             // restore menu item
 //            let menuItem : NSStatusItem = statusItem
-//            menuItem.menu?.itemWithTag(4)?.title = "Check for corectl updates"
+//            menuItem.menu?.itemWithTag(4)?.title = "Check for Corectl updates"
 //        }
     }
     else {
         let menuItem : NSStatusItem = statusItem
-        menuItem.menu?.item(withTag: 4)?.title = "Download corectl updates..."
+        menuItem.menu?.item(withTag: 4)?.title = "Downloading Corectl updates…"
     }
 }
 
