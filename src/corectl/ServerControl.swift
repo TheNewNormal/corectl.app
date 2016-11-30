@@ -30,7 +30,7 @@ func ServerStart() {
     task.waitUntilExit()
     
     //
-    DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.10) {
         //
         let script = Bundle.main.resourcePath! + "/check_corectld_status.command"
         let status = shell(script, arguments: [])

@@ -33,7 +33,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         check_for_dmg()
         
         // enable launch at login
-        addToLoginItems()
+        //addToLoginItems()
         
         // run startMainFunctions()
         startMainFunctions()
@@ -66,7 +66,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         else {
             //
             let alert: NSAlert = NSAlert()
-            alert.messageText = "Restarting Corectld server will halt all your running VMs."
+            alert.messageText = "Restarting Corectl server will halt all your running VMs."
             alert.informativeText = "Are you sure you want to do that?"
             alert.alertStyle = NSAlertStyle.warning
             alert.addButton(withTitle: "OK")
@@ -146,7 +146,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func About(_ sender: NSMenuItem) {
         let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString")as? String
         let mText: String = "Corectl for macOS v" + version!
-        let infoText: String = "A simple wrapper around the \"corectld\" server. Allows to have control your server via the Status Bar App."
+        let infoText: String = "A simple wrapper around the \"corectl\" server. Allows to have control it via the Status Bar App."
         displayWithMessage(mText, infoText: infoText)
     }
     
@@ -282,7 +282,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         else {
             // update menu item
             let menuItem : NSStatusItem = statusItem
-            menuItem.menu?.item(withTag: 10)?.title = "No Active VMs"
+            menuItem.menu?.item(withTag: 10)?.title = " Active VMs: 0"
         }
     }
 

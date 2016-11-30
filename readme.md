@@ -24,9 +24,15 @@ How to install Corectl App for macOS
 
 ###Install:
 
+Till `qcow-tool` is made to work as a standalone binary, for now please install missing library with `brew`:
+
+```
+brew install libev
+```
+
 Open the downloaded `DMG` file and drag the App to /Applications, and start the `Corectl` from there.
 
-Everytime you start App will be asked for your Mac user password, which will used to start `corectld` server as `root` is needed for the network to work.
+Everytime you start App you will be asked for your Mac user password, which will used to start `corectl` server as `root`, it is needed for the network to work.
 
 How it works
 ------------
