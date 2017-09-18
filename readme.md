@@ -19,10 +19,10 @@ How to install Corectl App for macOS
   - Mac 2010 or later for this to work.
 
 
-####Download:
+#### Download:
 * Download `corectl_app.dmg` from the [Releases Page](https://github.com/TheNewNormal/corectl.app/releases)
 
-###Install:
+### Install:
 
 Till `qcow-tool` is made to work as a standalone binary, for now please install missing library with `brew`:
 
